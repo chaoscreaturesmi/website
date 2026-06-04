@@ -1772,3 +1772,146 @@ function importDatabaseJSON(e) {
   };
   reader.readAsText(file);
 }
+
+// ============================================================
+// PWA SERVICE WORKER REGISTRATION
+// ============================================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Service Worker registered for Husbandry App', reg))
+      .catch(err => console.warn('Service Worker registration failed', err));
+  });
+}
+
+// ============================================================
+// HTML5 QR ENCLOSURE SCANNING ENGINE
+// ============================================================
+let scannerStream = null;
+let scannerActive = false;
+
+function openQRScanner() {
+  openModal('modal-qr-scanner');
+  startQRScanner();
+}
+
+async function startQRScanner() {
+  const video = document.getElementById('scanner-video');
+  const canvas = document.getElementById('scanner-canvas');
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  scannerActive = true;
+
+  try {
+    scannerStream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' } // Utilize rear camera
+    });
+    video.srcObject = scannerStream;
+    video.setAttribute('playsinline', true); // Critical for mobile iOS safari
+    video.play();
+
+    // Frame Capture Loop
+    requestAnimationFrame(function scanFrame() {
+      if (!scannerActive) return;
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imgData.data, imgData.width, imgData.height, {
+          inversionAttempts: 'dontInvert'
+        });
+        
+        if (code) {
+          handleScannedQR(code.data);
+          return;
+        }
+      }
+      requestAnimationFrame(scanFrame);
+    });
+  } catch (e) {
+    console.error("Camera access failed:", e);
+    alert("Camera Access Error: Please verify webcam/phone camera permissions.");
+    closeQRScanner();
+  }
+}
+
+function closeQRScanner() {
+  scannerActive = false;
+  if (scannerStream) {
+    scannerStream.getTracks().forEach(track => track.stop());
+    scannerStream = null;
+  }
+  closeModal('modal-qr-scanner');
+}
+
+function handleScannedQR(qrText) {
+  let animalId = null;
+  
+  // Extract ID from full URL parameters or literal match
+  try {
+    const url = new URL(qrText);
+    for (const [key, value] of url.searchParams) {
+      if (key.includes('entry') || key.toLowerCase().includes('id')) {
+        animalId = value;
+        break;
+      }
+    }
+    if (!animalId) {
+      const match = qrText.match(/[A-Z]{1,3}\d{3}/i);
+      if (match) animalId = match[0];
+    }
+  } catch (e) {
+    const match = qrText.match(/[A-Z]{1,3}\d{3}/i);
+    if (match) animalId = match[0];
+  }
+  
+  if (animalId) {
+    animalId = animalId.trim().toUpperCase();
+    const animal = db.Animals.find(a => a['Animal ID'] === animalId);
+    closeQRScanner();
+    if (animal) {
+      openAnimalProfile(animal);
+    } else {
+      alert(`Scanned Enclosure Tag ID "${animalId}" was not found in the database inventory.`);
+    }
+  } else {
+    alert("Scanned QR is not a valid Chaos Creatures QR label.");
+    closeQRScanner();
+  }
+}
+
+// ============================================================
+// THERMAL LABEL PRINTING FUNCTION
+// ============================================================
+function printAnimalLabel() {
+  if (!currentProfileAnimal) return;
+  const a = currentProfileAnimal;
+  
+  const printDiv = document.createElement('div');
+  printDiv.id = 'print-label-area';
+  printDiv.className = 'print-only-layout';
+  
+  const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSceiNNE-GG_Ys-Us0sb110WnUodEh_WiJOZjrCZFaM574-pxQ/viewform?usp=pp_url&entry.31510263=${a['Animal ID']}`;
+  const qrSrc = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(formUrl)}`;
+  const genesStr = [a['Gene 1'], a['Gene 2'], a['Gene 3']].filter(g => g).join(' ') || 'Normal';
+  
+  printDiv.innerHTML = `
+    <div class="print-label-card">
+      <div class="print-label-header">CHAOS CREATURES HUSBANDRY</div>
+      <div class="print-label-body">
+        <img class="print-label-qr" src="${qrSrc}" />
+        <div class="print-label-info">
+          <div class="print-label-id">${a['Animal ID']}</div>
+          <div class="print-label-name">${a.Name || 'No Name'}</div>
+          <div class="print-label-species">${a.Species}</div>
+          <div class="print-label-genes">${genesStr} ${a['Hets / Poss Hets'] ? '(' + a['Hets / Poss Hets'] + ')' : ''}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(printDiv);
+  window.print();
+  printDiv.remove();
+}

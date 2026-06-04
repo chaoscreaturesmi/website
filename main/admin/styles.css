@@ -1134,3 +1134,105 @@ button, input, select, textarea {
     justify-content: space-between;
   }
 }
+
+/* ============================================================
+   PRINT AND LABEL LAYOUT STYLES
+   ============================================================ */
+.print-only-layout {
+  display: none;
+}
+
+@media print {
+  body > * {
+    display: none !important;
+  }
+  
+  .print-only-layout {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3.5in !important;
+    height: 1.5in !important;
+    margin: 0 !important;
+    padding: 0.08in !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-family: 'Inter', system-ui, sans-serif !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  
+  .print-label-card {
+    border: 1.5px solid #000 !important;
+    border-radius: 6px !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 5px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .print-label-header {
+    font-weight: 800 !important;
+    font-size: 8px !important;
+    text-align: center !important;
+    border-bottom: 1px solid #000 !important;
+    padding-bottom: 2px !important;
+    letter-spacing: 0.5px !important;
+    color: #000 !important;
+  }
+  
+  .print-label-body {
+    display: flex !important;
+    flex: 1 !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding-top: 4px !important;
+  }
+  
+  .print-label-qr {
+    width: 1.05in !important;
+    height: 1.05in !important;
+    display: block !important;
+  }
+  
+  .print-label-info {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    color: #000 !important;
+  }
+  
+  .print-label-id {
+    font-weight: 900 !important;
+    font-size: 16px !important;
+    line-height: 1.0 !important;
+    margin-bottom: 2px !important;
+  }
+  
+  .print-label-name {
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1px !important;
+  }
+  
+  .print-label-species {
+    font-size: 8px !important;
+    color: #333 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1px !important;
+  }
+  
+  .print-label-genes {
+    font-size: 7.5px !important;
+    color: #444 !important;
+    line-height: 1.1 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    max-height: 22px !important;
+    overflow: hidden !important;
+  }
+}
