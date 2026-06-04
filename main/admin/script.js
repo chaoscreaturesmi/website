@@ -1151,7 +1151,17 @@ function openAnimalProfile(animal) {
   // Setup QR tab
   const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSceiNNE-GG_Ys-Us0sb110WnUodEh_WiJOZjrCZFaM574-pxQ/viewform?usp=pp_url&entry.31510263=${animalId}`;
   document.getElementById('qr-label-display').innerText = `${animalId} - ${animal.Name || ''}`;
-  document.getElementById('qr-code-img').src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(formUrl)}`;
+  
+  const qrContainer = document.getElementById('qr-code-container');
+  qrContainer.innerHTML = '';
+  new QRCode(qrContainer, {
+    text: formUrl,
+    width: 180,
+    height: 180,
+    colorDark : "#06080d",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
   
   // Set active tab to Growth
   switchProfileTab('growth');
@@ -1893,14 +1903,13 @@ function printAnimalLabel() {
   printDiv.className = 'print-only-layout';
   
   const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSceiNNE-GG_Ys-Us0sb110WnUodEh_WiJOZjrCZFaM574-pxQ/viewform?usp=pp_url&entry.31510263=${a['Animal ID']}`;
-  const qrSrc = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(formUrl)}`;
   const genesStr = [a['Gene 1'], a['Gene 2'], a['Gene 3']].filter(g => g).join(' ') || 'Normal';
   
   printDiv.innerHTML = `
     <div class="print-label-card">
       <div class="print-label-header">CHAOS CREATURES HUSBANDRY</div>
       <div class="print-label-body">
-        <img class="print-label-qr" src="${qrSrc}" />
+        <div id="print-qrcode-container" class="print-label-qr"></div>
         <div class="print-label-info">
           <div class="print-label-id">${a['Animal ID']}</div>
           <div class="print-label-name">${a.Name || 'No Name'}</div>
@@ -1912,6 +1921,17 @@ function printAnimalLabel() {
   `;
   
   document.body.appendChild(printDiv);
+  
+  // Generate local client-side QR code for print label
+  new QRCode(document.getElementById('print-qrcode-container'), {
+    text: formUrl,
+    width: 90,
+    height: 90,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+  });
+  
   window.print();
   printDiv.remove();
 }

@@ -11,9 +11,10 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="styles.css" />
-  <!-- Chart.js and jsQR for charts & camera scanning -->
+  <!-- Chart.js, jsQR, and QRCode.js for charts, scanning, & tags -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -687,10 +688,9 @@ function doOptions(e) {
 
             <!-- Tab: QR Tags -->
             <div class="profile-tab-content" id="profile-qr-tab" style="display:none; text-align:center;">
-              <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">This QR code opens the fast-log form for this animal on any mobile device. Print and tape it to the enclosure tub.</p>
-              <div class="qr-code-wrapper" style="margin: 0 auto;">
-                <h4 id="qr-label-display">BP001 - Lilith</h4>
-                <img src="" alt="QR Code" class="qr-image" id="qr-code-img" />
+              <div class="qr-code-wrapper" style="margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #fff; padding: 16px; border-radius: var(--radius-md); width: fit-content;">
+                <h4 id="qr-label-display" style="color: #06080d; margin-bottom: 12px; font-weight: 700;">BP001 - Lilith</h4>
+                <div id="qr-code-container"></div>
               </div>
               <button class="btn-primary" onclick="printAnimalLabel()" style="background:var(--accent-2); padding:10px 20px; font-size:0.85rem; margin-top:20px; width:auto; display:inline-flex;">
                 <span>🖨️ Print QR Label</span>
