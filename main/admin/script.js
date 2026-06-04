@@ -47,8 +47,16 @@ let userPasswords = {
 document.addEventListener('DOMContentLoaded', async () => {
   loadStoredSettings();
   loadStoredPasswords();
-  await initDatabase();
-  checkAuth();
+  
+  if (settings.syncSource === 'mariadb') {
+    await checkAuth();
+    if (currentUser) {
+      await initDatabase();
+    }
+  } else {
+    await initDatabase();
+    checkAuth();
+  }
   
   // Set default dates in forms to today
   const todayStr = new Date().toISOString().split('T')[0];
@@ -96,7 +104,32 @@ function saveSettings() {
 async function initDatabase() {
   updateSyncStatus('offline', 'Connecting...');
   
-  if (settings.syncSource === 'local') {
+  if (settings.syncSource === 'mariadb') {
+    updateSyncStatus('offline', 'Connecting to MariaDB...');
+    try {
+      const res = await fetch('../api/data.php');
+      if (res.status === 401) {
+        sessionStorage.removeItem('chaos_logged_user');
+        currentUser = null;
+        checkAuth();
+        updateSyncStatus('offline', 'Please Login');
+        return;
+      }
+      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+      db = await res.json();
+      updateSyncStatus('synced', 'Live MariaDB Sync');
+    } catch (e) {
+      console.error("Error fetching MariaDB data:", e);
+      const cachedDb = localStorage.getItem('chaos_db_sandbox');
+      if (cachedDb) {
+        db = JSON.parse(cachedDb);
+        updateSyncStatus('offline', 'Offline Cache Loaded');
+      } else {
+        await resetSandboxToInitial();
+        updateSyncStatus('error', 'Database Error - Safe Mode');
+      }
+    }
+  } else if (settings.syncSource === 'local') {
     // Load local database sandbox
     const localDb = localStorage.getItem('chaos_db_sandbox');
     if (localDb) {
@@ -276,44 +309,101 @@ function saveSandbox() {
 // ============================================================
 // SECURITY & AUTHENTICATION
 // ============================================================
-function checkAuth() {
-  const loggedUser = sessionStorage.getItem('chaos_logged_user');
-  if (loggedUser) {
-    currentUser = loggedUser;
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('app-container').style.display = 'flex';
-    
-    // Display names
-    document.getElementById('user-name-display').innerText = currentUser;
-    document.getElementById('avatar-letter').innerText = currentUser.charAt(0).toUpperCase();
-    document.getElementById('user-role-display').innerText = currentUser === 'Admin' ? 'System Owner' : 'Breeding Handler';
-    
-    refreshCurrentView();
+async function checkAuth() {
+  if (settings.syncSource === 'mariadb') {
+    try {
+      const res = await fetch('../api/auth.php?action=check');
+      const auth = await res.json();
+      if (auth.status === 'success' && auth.authenticated) {
+        currentUser = auth.username;
+        sessionStorage.setItem('chaos_logged_user', currentUser);
+        document.getElementById('login-container').style.display = 'none';
+        document.getElementById('app-container').style.display = 'flex';
+        
+        document.getElementById('user-name-display').innerText = currentUser;
+        document.getElementById('avatar-letter').innerText = currentUser.charAt(0).toUpperCase();
+        document.getElementById('user-role-display').innerText = auth.role || 'Breeding Handler';
+        
+        refreshCurrentView();
+      } else {
+        currentUser = null;
+        sessionStorage.removeItem('chaos_logged_user');
+        document.getElementById('login-container').style.display = 'flex';
+        document.getElementById('app-container').style.display = 'none';
+      }
+    } catch (e) {
+      console.error("Auth check failed:", e);
+    }
   } else {
-    currentUser = null;
-    document.getElementById('login-container').style.display = 'flex';
-    document.getElementById('app-container').style.display = 'none';
+    const loggedUser = sessionStorage.getItem('chaos_logged_user');
+    if (loggedUser) {
+      currentUser = loggedUser;
+      document.getElementById('login-container').style.display = 'none';
+      document.getElementById('app-container').style.display = 'flex';
+      
+      document.getElementById('user-name-display').innerText = currentUser;
+      document.getElementById('avatar-letter').innerText = currentUser.charAt(0).toUpperCase();
+      document.getElementById('user-role-display').innerText = currentUser === 'Admin' ? 'System Owner' : 'Breeding Handler';
+      
+      refreshCurrentView();
+    } else {
+      currentUser = null;
+      document.getElementById('login-container').style.display = 'flex';
+      document.getElementById('app-container').style.display = 'none';
+    }
   }
 }
 
-function handleLogin(e) {
+async function handleLogin(e) {
   e.preventDefault();
   const username = document.getElementById('username').value;
   const pass = document.getElementById('password').value;
   const loginError = document.getElementById('login-error');
   
-  if (userPasswords[username] === pass) {
-    loginError.style.display = 'none';
-    sessionStorage.setItem('chaos_logged_user', username);
-    document.getElementById('password').value = '';
-    checkAuth();
+  if (settings.syncSource === 'mariadb') {
+    try {
+      const res = await fetch('../api/auth.php?action=login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: username, password: pass })
+      });
+      const data = await res.json();
+      if (data.status === 'success') {
+        loginError.style.display = 'none';
+        sessionStorage.setItem('chaos_logged_user', username);
+        document.getElementById('password').value = '';
+        await initDatabase();
+        await checkAuth();
+      } else {
+        loginError.style.display = 'block';
+        loginError.innerText = data.message || "Invalid security password.";
+      }
+    } catch (err) {
+      console.error("Login failed:", err);
+      loginError.style.display = 'block';
+      loginError.innerText = "Network error connecting to API server.";
+    }
   } else {
-    loginError.style.display = 'block';
-    loginError.innerText = "Invalid security password for " + username;
+    if (userPasswords[username] === pass) {
+      loginError.style.display = 'none';
+      sessionStorage.setItem('chaos_logged_user', username);
+      document.getElementById('password').value = '';
+      checkAuth();
+    } else {
+      loginError.style.display = 'block';
+      loginError.innerText = "Invalid security password for " + username;
+    }
   }
 }
 
-function handleLogout() {
+async function handleLogout() {
+  if (settings.syncSource === 'mariadb') {
+    try {
+      await fetch('../api/auth.php?action=logout');
+    } catch (e) {
+      console.error("Logout request failed:", e);
+    }
+  }
   sessionStorage.removeItem('chaos_logged_user');
   checkAuth();
 }
@@ -333,6 +423,39 @@ function updateSyncStatus(status, text) {
 
 // Save a new record (writes to Sheet if google-write, otherwise saves to sandbox)
 async function saveRecord(sheetName, recordData) {
+  if (settings.syncSource === 'mariadb') {
+    updateSyncStatus('offline', 'Saving to MariaDB...');
+    try {
+      const res = await fetch('../api/data.php?action=append', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sheetName: sheetName,
+          rowData: recordData
+        })
+      });
+      if (res.status === 401) {
+        alert("Session Expired: Please log in again.");
+        handleLogout();
+        return;
+      }
+      const data = await res.json();
+      if (data.status === 'success') {
+        updateSyncStatus('synced', 'Live MariaDB Sync');
+        db[sheetName].unshift(recordData);
+        refreshCurrentView();
+      } else {
+        alert("Database Error: " + data.message);
+        updateSyncStatus('error', 'Save Failed');
+      }
+    } catch (e) {
+      console.error("MariaDB write error:", e);
+      updateSyncStatus('error', 'Connection Fail');
+      alert("Error saving record to database. Verify network connection.");
+    }
+    return;
+  }
+
   // Update local DB cache first for instant feedback
   db[sheetName].unshift(recordData);
   saveSandbox();
