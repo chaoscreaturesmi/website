@@ -1,0 +1,19 @@
+# Chaos Creatures Website Git Ignore
+
+# Log directories
+logs/
+
+# System generated folders
+.antigravitycli/
+.system_generated/
+.local/
+
+# History files
+.bash_history
+
+# Backups and temporary files
+*.backup
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chaos Creatures Breed & Morph Shop — Ethical breeder projects, premium reptile morphs, available listings, and interactive genetics planner." />
+  <meta name="theme-color" content="#06080d" />
+
+  <title>Chaos Creatures · Breed &amp; Morph Shop</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- OVERLAY FOR MOBILE NAV -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<header class="navbar-fixed" id="navbar">
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-brand">
+        <span class="logo-icon" aria-hidden="true">🧬</span>
+        <h2>Chaos Breed Shop</h2>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a href="#breeders" role="menuitem">Breeder Projects</a></li>
+        <li role="none"><a href="#planner" role="menuitem">Genetics Planner</a></li>
+        <li role="none"><a href="#available" role="menuitem">Available Animals</a></li>
+        <li role="none"><a href="#inquiry" role="menuitem">Inquiry Form</a></li>
+        <li role="none"><a href="http://www.chaoscreaturesmi.org" role="menuitem">🐾 Rescue Main</a></li>
+        <li role="none"><a href="http://www.chaoscreaturesmi.info" role="menuitem">🦎 Care Library</a></li>
+
+        <!-- Actions -->
+        <li class="nav-actions-group" role="none">
+          <button class="theme-btn" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main id="main-content">
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content animate-on-scroll">
+        <div class="hero-badge">🧬 Premium Reptile Shop &amp; Morph Projects</div>
+        <h1 class="hero-title">
+          Mastering Genetics,<br /><span>Breeding with Ethics</span>
+        </h1>
+        <p class="hero-subtitle">
+          Ethically bred morphs, hand-raised lineages, and research-grade care. Explore our active breeding projects, calculate gene probabilities, and claim your next companion.
+        </p>
+        <div class="btn-group">
+          <a href="#available" class="btn btn-primary">Shop Available Listings</a>
+          <a href="#planner" class="btn btn-secondary">Try Morph Genetics Planner</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BREEDER PROJECTS SECTION
+       ============================================================ -->
+  <section class="breeders-section" id="breeders">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Active Breeding Projects</div>
+        <h2>Our Breeder Projects</h2>
+        <p>A showcase of our core genetic pursuits. We breed for health first, structure second, and vibrant visual colors third.</p>
+      </div>
+
+      <div class="breeders-grid">
+        <!-- BALL PYTHON PROJECT -->
+        <article class="project-card animate-on-scroll">
+          <div class="project-image-wrapper">
+            <img src="../info/images/ball-python.png" alt="Banana Piebald Project" class="project-image" />
+            <div class="project-tag tag-active">Active Season</div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">🐍 Ball Python</div>
+            <h3>Banana Piebald Project</h3>
+            <p class="project-desc">
+              Focusing on crossing Co-dominant Banana with Recessive Piebald to achieve bright golden, white-spliced reptiles. Emphasizing structural strength and consistent feeding habits.
+            </p>
+            <div class="project-stats">
+              <span class="p-stat"><strong>Sire:</strong> Banana Pied</span>
+              <span class="p-stat"><strong>Dam:</strong> Pastel Het Pied</span>
+              <span class="p-stat"><strong>Est. Clutches:</strong> 2</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CRESTED GECKO PROJECT -->
+        <article class="project-card animate-on-scroll">
+          <div class="project-image-wrapper">
+            <img src="../info/images/crested-gecko.png" alt="Lilly White Project" class="project-image" />
+            <div class="project-tag tag-incubating">Eggs Incubating</div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">🦎 Crested Gecko</div>
+            <h3>High-Contrast Lilly White</h3>
+            <p class="project-desc">
+              Line-breeding for extreme lateral coverage and creamy, high-contrast white patterns. All geckos are raised on complete powdered diets supplemented with gut-loaded insects.
+            </p>
+            <div class="project-stats">
+              <span class="p-stat"><strong>Sire:</strong> Cream Lilly White</span>
+              <span class="p-stat"><strong>Dam:</strong> Tri-Color Harlequin</span>
+              <span class="p-stat"><strong>Eggs:</strong> 6 in incubator</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- LEOPARD GECKO PROJECT -->
+        <article class="project-card animate-on-scroll">
+          <div class="project-image-wrapper">
+            <img src="../info/images/leopard-gecko.png" alt="Black Night Project" class="project-image" />
+            <div class="project-tag tag-resting">Resting Block</div>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">🦎 Leopard Gecko</div>
+            <h3>Hyper-Melanistic Black Night</h3>
+            <p class="project-desc">
+              A premium, line-bred project selecting for dense, charcoal-to-black coloration. Raised under full-spectrum UVB lighting with gut-loaded feeder colonies.
+            </p>
+            <div class="project-stats">
+              <span class="p-stat"><strong>Sire:</strong> 100% Solid Black Night</span>
+              <span class="p-stat"><strong>Dam:</strong> Dark Charcoal Cross</span>
+              <span class="p-stat"><strong>Next Cycle:</strong> Nov 2026</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GENETICS PLANNER (PUNNETT CALCULATOR)
+       ============================================================ -->
+  <section class="planner-section" id="planner">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Interactive Utility</div>
+        <h2>Morph Genetics Planner</h2>
+        <p>Calculate genetic outcomes for Ball Python pairings using our real-time Mendel calculator. Select traits for both parents to see offspring possibilities.</p>
+      </div>
+
+      <div class="planner-box animate-on-scroll">
+        <div class="planner-species-select">
+          <label for="plannerSpecies">Pairing Species:</label>
+          <select id="plannerSpecies">
+            <option value="ball-python">🧬 Ball Python (Python regius)</option>
+            <option value="blood-python">🩸 Blood Python (Python brongersmai)</option>
+            <option value="crested-gecko">🦎 Crested Gecko (Correlophus ciliatus)</option>
+            <option value="leopard-gecko">🦎 Leopard Gecko (Eublepharis macularius)</option>
+          </select>
+        </div>
+        
+        <div class="planner-grid">
+          
+          <!-- Parent Selection Form -->
+          <div class="planner-form">
+            <h3>Select Parent Genetics</h3>
+            <div class="parent-columns">
+              
+              <!-- Sire (Father) -->
+              <div class="parent-form-group">
+                <div class="parent-header-title sire-color">♂ Sire (Father)</div>
+                
+                <div class="add-gene-console">
+                  <select id="sireGeneSelect" class="gene-selector">
+                    <option value="">-- Add a Gene --</option>
+                  </select>
+                  <select id="sireGeneState" class="gene-state-selector" style="display:none;"></select>
+                  <button type="button" id="sireAddGeneBtn" class="btn btn-secondary add-tag-btn">+ Add</button>
+                </div>
+
+                <div class="active-tags" id="sireActiveTags">
+                  <p class="no-tags-placeholder">Normal Wild-Type</p>
+                </div>
+              </div>
+
+              <!-- Dam (Mother) -->
+              <div class="parent-form-group">
+                <div class="parent-header-title dam-color">♀ Dam (Mother)</div>
+                
+                <div class="add-gene-console">
+                  <select id="damGeneSelect" class="gene-selector">
+                    <option value="">-- Add a Gene --</option>
+                  </select>
+                  <select id="damGeneState" class="gene-state-selector" style="display:none;"></select>
+                  <button type="button" id="damAddGeneBtn" class="btn btn-secondary add-tag-btn">+ Add</button>
+                </div>
+
+                <div class="active-tags" id="damActiveTags">
+                  <p class="no-tags-placeholder">Normal Wild-Type</p>
+                </div>
+              </div>
+
+            </div>
+
+            <button type="button" class="btn btn-primary planner-calc-btn" id="calcGeneticsBtn">Calculate Offspring</button>
+          </div>
+
+          <!-- Calculation Outcomes Display -->
+          <div class="planner-results">
+            <h3>Calculated Probabilities</h3>
+            <p class="results-intro" id="resultsIntro">Select parent traits and click Calculate above to run the Mendelian crossing model.</p>
+            
+            <div class="results-list-container" style="display: none;" id="resultsListContainer">
+              <div class="results-list" id="resultsList">
+                <!-- Javascript will render results here -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       AVAILABLE SHOP SECTION
+       ============================================================ -->
+  <section class="available-section" id="available">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Inventory</div>
+        <h2>Available Animals</h2>
+        <p>Explore healthy, active, and fully feeding offspring ready to ship directly to your home or local FedEx hub.</p>
+      </div>
+
+      <!-- Filters console -->
+      <div class="inventory-filters animate-on-scroll">
+        <div class="filter-group">
+          <label for="filterSpecies">Filter Species</label>
+          <select id="filterSpecies">
+            <option value="all">All Species</option>
+            <option value="ball-python">Ball Pythons</option>
+            <option value="crested-gecko">Crested Geckos</option>
+            <option value="leopard-gecko">Leopard Geckos</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="filterGender">Filter Gender</label>
+          <select id="filterGender">
+            <option value="all">All Genders</option>
+            <option value="male">Male (♂)</option>
+            <option value="female">Female (♀)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Available Listings Grid -->
+      <div class="available-grid stagger-children" id="listingsGrid">
+        
+        <!-- Listing 1 (Ball Python Male) -->
+        <article class="animal-card animate-on-scroll" data-species="ball-python" data-gender="male">
+          <div class="animal-image-wrapper">
+            <img src="../info/images/ball-python.png" alt="Banana Pastel Piebald Male" class="animal-image" />
+            <span class="animal-status status-available">Available</span>
+          </div>
+          <div class="animal-body">
+            <div class="animal-price">$450</div>
+            <h3>Banana Pastel Pied</h3>
+            <p class="animal-species">Ball Python &bull; ♂ Male</p>
+            
+            <ul class="animal-specs">
+              <li><strong>ID:</strong> #BP-2026-01</li>
+              <li><strong>Weight:</strong> 120 grams</li>
+              <li><strong>Diet:</strong> Frozen/Thawed Rat Pups</li>
+              <li><strong>Hatch Date:</strong> Jan 10, 2026</li>
+            </ul>
+
+            <button type="button" class="btn btn-secondary inquire-trigger-btn" data-animal-id="BP-2026-01" data-animal-name="Banana Pastel Pied (Male)">Inquire Animal</button>
+          </div>
+        </article>
+
+        <!-- Listing 2 (Crested Gecko Female) -->
+        <article class="animal-card animate-on-scroll" data-species="crested-gecko" data-gender="female">
+          <div class="animal-image-wrapper">
+            <img src="../info/images/crested-gecko.png" alt="Lilly White Tri-Color Female" class="animal-image" />
+            <span class="animal-status status-available">Available</span>
+          </div>
+          <div class="animal-body">
+            <div class="animal-price">$320</div>
+            <h3>Lilly White Tri-Color</h3>
+            <p class="animal-species">Crested Gecko &bull; ♀ Female</p>
+            
+            <ul class="animal-specs">
+              <li><strong>ID:</strong> #CG-2026-04</li>
+              <li><strong>Weight:</strong> 15 grams</li>
+              <li><strong>Diet:</strong> Repashy / Pangea Mix</li>
+              <li><strong>Hatch Date:</strong> Nov 15, 2025</li>
+            </ul>
+
+            <button type="button" class="btn btn-secondary inquire-trigger-btn" data-animal-id="CG-2026-04" data-animal-name="Lilly White Tri-Color (Female)">Inquire Animal</button>
+          </div>
+        </article>
+
+        <!-- Listing 3 (Leopard Gecko Male) -->
+        <article class="animal-card animate-on-scroll" data-species="leopard-gecko" data-gender="male">
+          <div class="animal-image-wrapper">
+            <img src="../info/images/leopard-gecko.png" alt="Tangerine Tremper Albino Male" class="animal-image" />
+            <span class="animal-status status-hold">On Hold</span>
+          </div>
+          <div class="animal-body">
+            <div class="animal-price">$150</div>
+            <h3>Tangerine Tremper Albino</h3>
+            <p class="animal-species">Leopard Gecko &bull; ♂ Male</p>
+            
+            <ul class="animal-specs">
+              <li><strong>ID:</strong> #LG-2026-08</li>
+              <li><strong>Weight:</strong> 45 grams</li>
+              <li><strong>Diet:</strong> Gut-loaded Crickets / Dubias</li>
+              <li><strong>Hatch Date:</strong> Dec 02, 2025</li>
+            </ul>
+
+            <button type="button" class="btn btn-secondary inquire-trigger-btn" data-animal-id="LG-2026-08" data-animal-name="Tangerine Tremper Albino (Male)" disabled>Currently Held</button>
+          </div>
+        </article>
+
+        <!-- Listing 4 (Ball Python Female) -->
+        <article class="animal-card animate-on-scroll" data-species="ball-python" data-gender="female">
+          <div class="animal-image-wrapper">
+            <img src="../info/images/ball-python.png" alt="Pastel Yellowbelly Female" class="animal-image" />
+            <span class="animal-status status-available">Available</span>
+          </div>
+          <div class="animal-body">
+            <div class="animal-price">$120</div>
+            <h3>Pastel Yellowbelly</h3>
+            <p class="animal-species">Ball Python &bull; ♀ Female</p>
+            
+            <ul class="animal-specs">
+              <li><strong>ID:</strong> #BP-2026-02</li>
+              <li><strong>Weight:</strong> 140 grams</li>
+              <li><strong>Diet:</strong> Frozen/Thawed Small Mice</li>
+              <li><strong>Hatch Date:</strong> Jan 12, 2026</li>
+            </ul>
+
+            <button type="button" class="btn btn-secondary inquire-trigger-btn" data-animal-id="BP-2026-02" data-animal-name="Pastel Yellowbelly (Female)">Inquire Animal</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INQUIRY & INTEREST FORM
+       ============================================================ -->
+  <section class="inquiry-section" id="inquiry">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Purchase Inquiries</div>
+        <h2>Breed &amp; Morph Inquiry</h2>
+        <p>Inquire about any animal in our store, ask genetic pairing questions, or request additional photographs. We arrange safe shipping across the US.</p>
+      </div>
+
+      <div class="inquiry-box animate-on-scroll">
+        <div class="form-card">
+          <form id="inquiryForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms Config -->
+            <input type="hidden" name="access_key" value="e08925d7-da14-40d1-b885-0dbb5ec7a566" />
+            <input type="hidden" name="subject" id="formSubject" value="New Shop Purchase Inquiry" />
+            <input type="hidden" name="from_name" value="Chaos Creatures Breeder Shop" />
+
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="formName">Your Name</label>
+                <input type="text" id="formName" name="Visitor Name" placeholder="Terry Miller" required />
+              </div>
+              <div class="form-group">
+                <label for="formEmail">Email or Phone</label>
+                <input type="text" id="formEmail" name="email" placeholder="terry@gmail.com" required />
+              </div>
+            </div>
+
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="formInquiryType">Inquiry Type</label>
+                <select id="formInquiryType" name="Inquiry Type">
+                  <option value="Purchase Inquiry">Purchase Available Listing</option>
+                  <option value="Breeder Project Question">Breeder Project Question</option>
+                  <option value="Custom Genetics Inquiry">Custom Genetic Pairing Question</option>
+                  <option value="General Shop Inquiry">General Shop Inquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="formAnimalId">Animal ID / Project Code</label>
+                <input type="text" id="formAnimalId" name="Animal ID Reference" placeholder="e.g. BP-2026-01 (or leave blank)" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="formMessage">Your Message</label>
+              <textarea id="formMessage" name="Detailed Message" rows="4" placeholder="Let us know what questions you have about this animal or breeding lineage..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit-btn">Send Inquiry</button>
+          </form>
+
+          <div class="form-success-banner" id="successBanner">
+            <strong>Inquiry Logged!</strong> Thank you for your interest in Chaos Creatures. We have received your submission and will get back to you shortly to coordinate purchase, shipping details, or answer your genetics query.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Chaos Creatures &bull; Breed &amp; Morph Portal</p>
+      <p>Ethical breeding, verified lineages, hand-raised care. Welcome to the family! 🧬🦎🐍</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

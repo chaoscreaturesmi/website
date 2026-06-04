@@ -1,0 +1,71 @@
+{
+  "name": "Chaos Creature Rescue — Care & Husbandry Library",
+  "short_name": "CCR Care Guide",
+  "description": "Research-backed care and husbandry guides for reptiles and feeder colonies. Your practical reference for new keepers, adopters, and rescue partners.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0a0c10",
+  "background_color": "#0a0c10",
+  "categories": ["reference", "education"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230a0c10' width='192' height='192' rx='24'/><circle cx='96' cy='96' r='76' fill='%2322c55e'/><text x='96' y='108' font-size='72' fill='%230a0c10' text-anchor='middle' dominant-baseline='central'>🦎</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230a0c10' width='512' height='512' rx='64'/><circle cx='256' cy='256' r='200' fill='%2322c55e'/><text x='256' y='276' font-size='180' fill='%230a0c10' text-anchor='middle' dominant-baseline='central'>🦎</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%2322c55e' width='512' height='512'/><text x='256' y='276' font-size='180' fill='%230a0c10' text-anchor='middle' dominant-baseline='central'>🦎</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Leopard Gecko Care",
+      "short_name": "Leo Gecko",
+      "description": "View Leopard Gecko care guide",
+      "url": "./#guide-leopard-gecko",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%2322c55e'/><text x='48' y='56' font-size='48' fill='%230a0c10' text-anchor='middle' dominant-baseline='central'>🦎</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Ball Python Care",
+      "short_name": "Ball Python",
+      "description": "View Ball Python care guide",
+      "url": "./#guide-ball-python",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%2322c55e'/><text x='48' y='56' font-size='48' fill='%230a0c10' text-anchor='middle' dominant-baseline='central'>🐍</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Dubia Roach Colony",
+      "short_name": "Dubia Roaches",
+      "description": "View Dubia Roach colony guide",
+      "url": "./#guide-dubia-roaches",
+      "icons": [
+        {
+          "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><circle cx='48' cy='48' r='48' fill='%2322c55e'/><text x='48' y='56' font-size='48' fill='%230a0c10' text-anchor='middle' dominant-baseline='central'>🪳</text></svg>",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

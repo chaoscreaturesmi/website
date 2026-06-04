@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chaos Creature Rescue — Expert care and husbandry guides for reptiles and feeder colonies. Accurate, research-backed information for keepers, adopters, and rescue partners." />
+  <meta name="theme-color" content="#0a0c10" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>Chaos Creature Rescue · Care &amp; Husbandry Library</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦎</text></svg>" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦎</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- OVERLAY FOR MOBILE NAV -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<header class="navbar-fixed" id="navbar">
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-brand">
+        <span class="logo-icon" aria-hidden="true">🦎</span>
+        <h2>Chaos Creature Rescue</h2>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a href="#species" role="menuitem">Species</a></li>
+        <li role="none"><a href="#guides" role="menuitem">Care Guides</a></li>
+        <li role="none"><a href="#feeders" role="menuitem">Feeder Colonies</a></li>
+        <li role="none"><a href="http://www.chaoscreaturesmi.org" role="menuitem">🐾 Rescue Main</a></li>
+        <li role="none"><a href="http://www.chaoscreaturesmi.online" role="menuitem">🧬 Breed Shop</a></li>
+
+
+        <!-- Actions Grouped -->
+        <li class="nav-actions-group" role="none">
+          <button class="theme-btn" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
+          <button class="nav-action-btn" id="printBtn" aria-label="Print care guides" title="Print">🖨️</button>
+          <span id="installBtnWrapper" style="display:none;">
+            <button class="nav-action-btn" id="installBtn" aria-label="Install app" title="Install App">📲</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main id="main-content">
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">🐾 Reptile Rescue &amp; Education</div>
+      <h1 class="hero-title">
+        Expert Care for<br /><span class="accent">Every Creature</span>
+      </h1>
+      <p class="hero-subtitle">
+        Research-backed husbandry guides for reptiles and feeder colonies. Built for new keepers, adopters, and rescue partners.
+      </p>
+      <div class="hero-actions">
+        <a href="#species" class="btn btn-primary">Explore Species</a>
+        <a href="#guides" class="btn btn-secondary">Read Care Guides</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item animate-on-scroll">
+        <h3>4</h3>
+        <p>Reptile Species</p>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <h3>3</h3>
+        <p>Feeder Guides</p>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <h3>50+</h3>
+        <p>Care Topics</p>
+      </div>
+      <div class="stat-item animate-on-scroll">
+        <h3>24/7</h3>
+        <p>Offline Access</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SPECIES GRID
+     ============================================================ -->
+<section class="species-section" id="species">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Animals</div>
+      <h2>Species Library</h2>
+      <p>Comprehensive care guides for every animal in our rescue</p>
+    </div>
+
+    <!-- Search Library Centered -->
+    <div class="library-search-container animate-on-scroll">
+      <span class="search-icon" aria-hidden="true">🔍</span>
+      <input type="search" id="searchInput" placeholder="Search species, topics, tips, care guidelines..." aria-label="Search care library" autocomplete="off" />
+      <button id="searchClear" class="search-clear" aria-label="Clear search" style="display:none;">✕</button>
+    </div>
+
+    <div class="species-grid stagger-children" id="speciesGrid">
+
+      <!-- LEOPARD GECKO -->
+      <article class="species-card animate-on-scroll" data-species="leopard-gecko">
+        <div class="card-image-wrapper">
+          <img src="images/leopard-gecko.png" alt="Leopard Gecko — Eublepharis macularius" class="card-image" loading="lazy" />
+          <div class="card-number">01</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Reptile</div>
+          <h3>Leopard Gecko</h3>
+          <p class="card-scientific">Eublepharis macularius</p>
+          <p class="card-desc">Beginner-friendly crepuscular gecko from South Asia. Hardy and docile when kept correctly.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>88–92°F</span></div>
+            <div class="meta-item">💧 <span>30–40%</span></div>
+            <div class="meta-item">📏 <span>7–10"</span></div>
+            <div class="meta-item">⏳ <span>15–20 yrs</span></div>
+          </div>
+          <a href="#guide-leopard-gecko" class="card-link">Full Care Guide →</a>
+        </div>
+      </article>
+
+      <!-- CRESTED GECKO -->
+      <article class="species-card animate-on-scroll" data-species="crested-gecko">
+        <div class="card-image-wrapper">
+          <img src="images/crested-gecko.png" alt="Crested Gecko — Correlophus ciliatus" class="card-image" loading="lazy" />
+          <div class="card-number">02</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Reptile</div>
+          <h3>Crested Gecko</h3>
+          <p class="card-scientific">Correlophus ciliatus</p>
+          <p class="card-desc">Arboreal gecko from New Caledonia. Thrives at room temperature — heat-sensitive species.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>72–78°F</span></div>
+            <div class="meta-item">💧 <span>60–75%</span></div>
+            <div class="meta-item">📏 <span>6–10"</span></div>
+            <div class="meta-item">⏳ <span>15–20 yrs</span></div>
+          </div>
+          <a href="#guide-crested-gecko" class="card-link">Full Care Guide →</a>
+        </div>
+      </article>
+
+      <!-- BALL PYTHON -->
+      <article class="species-card animate-on-scroll" data-species="ball-python">
+        <div class="card-image-wrapper">
+          <img src="images/ball-python.png" alt="Ball Python — Python regius" class="card-image" loading="lazy" />
+          <div class="card-number">03</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Reptile</div>
+          <h3>Ball Python</h3>
+          <p class="card-scientific">Python regius</p>
+          <p class="card-desc">Docile, shy python from West Africa. One of the most popular pet snakes worldwide.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>88–92°F</span></div>
+            <div class="meta-item">💧 <span>60–70%</span></div>
+            <div class="meta-item">📏 <span>3–5 ft</span></div>
+            <div class="meta-item">⏳ <span>20–30 yrs</span></div>
+          </div>
+          <a href="#guide-ball-python" class="card-link">Full Care Guide →</a>
+        </div>
+      </article>
+
+      <!-- BLOOD PYTHON -->
+      <article class="species-card animate-on-scroll" data-species="blood-python">
+        <div class="card-image-wrapper">
+          <img src="images/blood-python.png" alt="Blood Python — Python brongersmai" class="card-image" loading="lazy" />
+          <div class="card-number">04</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Reptile</div>
+          <h3>Blood Python</h3>
+          <p class="card-scientific">Python brongersmai</p>
+          <p class="card-desc">Heavy-bodied python from Southeast Asia. Heat-sensitive with a misunderstood temperament.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>82–88°F</span></div>
+            <div class="meta-item">💧 <span>60–75%</span></div>
+            <div class="meta-item">📏 <span>4–6 ft</span></div>
+            <div class="meta-item">⏳ <span>20–25 yrs</span></div>
+          </div>
+          <a href="#guide-blood-python" class="card-link">Full Care Guide →</a>
+        </div>
+      </article>
+
+      <!-- DUBIA ROACHES -->
+      <article class="species-card animate-on-scroll" data-species="dubia-roaches">
+        <div class="card-image-wrapper">
+          <img src="images/dubia-roaches.png" alt="Dubia Roaches — Blaptica dubia" class="card-image" loading="lazy" />
+          <div class="card-number">05</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Feeder</div>
+          <h3>Dubia Roaches</h3>
+          <p class="card-scientific">Blaptica dubia</p>
+          <p class="card-desc">Premier feeder insect. High protein, low chitin, easy to breed and gut-load.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>85–95°F</span></div>
+            <div class="meta-item">💧 <span>40–60%</span></div>
+            <div class="meta-item">🥩 <span>~22% protein</span></div>
+          </div>
+          <a href="#guide-dubia-roaches" class="card-link">Colony Guide →</a>
+        </div>
+      </article>
+
+      <!-- CRICKETS -->
+      <article class="species-card animate-on-scroll" data-species="crickets">
+        <div class="card-image-wrapper">
+          <img src="images/crickets.png" alt="Crickets — Acheta domesticus" class="card-image" loading="lazy" />
+          <div class="card-number">06</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Feeder</div>
+          <h3>Crickets</h3>
+          <p class="card-scientific">Acheta domesticus</p>
+          <p class="card-desc">Classic feeder insect. Active movement triggers strong feeding response in reptiles.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>75–85°F</span></div>
+            <div class="meta-item">💧 <span>50–60%</span></div>
+            <div class="meta-item">🥩 <span>~20% protein</span></div>
+          </div>
+          <a href="#guide-crickets" class="card-link">Colony Guide →</a>
+        </div>
+      </article>
+
+      <!-- FEEDER RATS -->
+      <article class="species-card animate-on-scroll" data-species="feeder-rats">
+        <div class="card-image-wrapper">
+          <img src="images/feeder-rats.png" alt="Feeder Rats — Rattus norvegicus" class="card-image" loading="lazy" />
+          <div class="card-number">07</div>
+        </div>
+        <div class="card-body">
+          <div class="card-category">Feeder</div>
+          <h3>Feeder Rats</h3>
+          <p class="card-scientific">Rattus norvegicus</p>
+          <p class="card-desc">Complete whole-prey nutrition for snakes. Ethical care is non-negotiable.</p>
+          <div class="card-meta">
+            <div class="meta-item">🌡️ <span>65–79°F</span></div>
+            <div class="meta-item">💧 <span>40–70%</span></div>
+            <div class="meta-item">🥩 <span>~58% protein</span></div>
+          </div>
+          <a href="#guide-feeder-rats" class="card-link">Colony Guide →</a>
+        </div>
+      </article>
+
+    </div><!-- /species-grid -->
+
+    <!-- No search results message -->
+    <div class="no-results" id="noResults" style="display:none;">
+      <div class="no-results-icon">🔍</div>
+      <p>No species match your search. Try different keywords.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     DETAILED CARE GUIDES
+     ============================================================ -->
+<section class="guides-section" id="guides">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">In-Depth Information</div>
+      <h2>Care Guides</h2>
+      <p>Everything you need to know about keeping these animals healthy and thriving</p>
+    </div>
+
+    <!-- ==================== LEOPARD GECKO ==================== -->
+    <div class="guide-card animate-on-scroll" id="guide-leopard-gecko" data-species="leopard-gecko">
+      <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+      <div class="guide-header">
+        <div class="guide-icon"><img src="images/leopard-gecko.png" alt="" /></div>
+        <div class="guide-title-group">
+          <h3>Leopard Gecko</h3>
+          <p class="guide-scientific">Eublepharis macularius</p>
+          <p class="guide-intro">Crepuscular, terrestrial gecko native to the arid regions of South Asia (Afghanistan, Pakistan, India). Hardy and docile — one of the best beginner reptiles when kept with modern husbandry standards.</p>
+          <div class="guide-quick-stats">
+            <span class="quick-stat"><span class="qs-icon">📏</span> 7–10 inches</span>
+            <span class="quick-stat"><span class="qs-icon">⏳</span> 15–20+ years</span>
+            <span class="quick-stat"><span class="qs-icon">⚖️</span> 50–80g</span>
+            <span class="quick-stat"><span class="qs-icon">🏠</span> Solitary only</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-grid">
+        <div>
+          <div class="guide-block">
+            <h4>🏠 Enclosure &amp; Environment</h4>
+            <ul>
+              <li><strong>Minimum size:</strong> 40-gallon breeder (36"×18"×18"). Larger (4'×2'×2') increasingly recommended for optimal welfare. The old 20-gallon minimum is outdated.</li>
+              <li><strong>Substrate:</strong> Paper towels (juveniles/quarantine), slate tile, or 50/50 organic topsoil + play sand mix. <em>Avoid</em> calcium sand, wood chips, walnut shells, and reptile carpet (catches claws).</li>
+              <li><strong>Hides:</strong> Minimum 3 — warm side, cool side, and a <strong>humid/moist hide</strong> with damp sphagnum moss (critical for shedding).</li>
+              <li><strong>Decor:</strong> Rocks, driftwood, climbing opportunities. Despite being terrestrial, they do climb.</li>
+              <li><strong>Housing:</strong> Solitary ONLY — leopard geckos are territorial and must never be cohoused.</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🌡️ Temperature</h4>
+            <ul>
+              <li><strong>Basking spot:</strong> 88–92°F</li>
+              <li><strong>Warm side:</strong> 85–90°F</li>
+              <li><strong>Cool side:</strong> 75–80°F</li>
+              <li><strong>Night drop:</strong> Down to ~70°F is fine</li>
+              <li><strong>Heating:</strong> Overhead heating (halogen flood bulb or deep heat projector) preferred. ALL heat sources on a thermostat. Avoid colored bulbs (red/blue).</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>💧 Humidity</h4>
+            <ul>
+              <li><strong>Ambient:</strong> 30–40%</li>
+              <li><strong>Humid hide:</strong> 70–80% inside the moist hide</li>
+              <li>Mist the humid hide, NOT the whole tank</li>
+              <li>Above 70% ambient → respiratory infections. Below 30% → dehydration</li>
+              <li>Use a digital hygrometer — analog gauges are unreliable</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>💡 Lighting</h4>
+            <ul>
+              <li><strong>UVB:</strong> YES — low-level UVB is now recommended despite old advice. Use Arcadia ShadeDweller (7%) or Zoo Med Reptisun 5.0.</li>
+              <li><strong>Photoperiod:</strong> 12 hours light / 12 hours dark</li>
+              <li>Ensure shaded retreat areas so the gecko can self-regulate exposure</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="guide-block">
+            <h4>🍽️ Diet &amp; Feeding</h4>
+            <ul>
+              <li><strong>Diet:</strong> Strictly insectivorous — live insects only</li>
+              <li><strong>Staples:</strong> Dubia roaches, crickets, mealworms</li>
+              <li><strong>Treats:</strong> Superworms, waxworms (high fat — sparingly), hornworms</li>
+              <li><strong>Juveniles (0–6 mo):</strong> Daily, 4–8 insects</li>
+              <li><strong>Sub-adults (6–12 mo):</strong> Every other day, 5–8 insects</li>
+              <li><strong>Adults (12+ mo):</strong> Every 2–3 days, 6–10 insects</li>
+              <li><strong>Size rule:</strong> Never wider than the space between the gecko's eyes</li>
+              <li><strong>Supplements:</strong> Calcium (no D3) dish available 24/7. Calcium with D3 dusted 2–3×/week (juveniles) or 1×/week (adults). Multivitamin 1×/week (juveniles), 1–2×/month (adults).</li>
+              <li><strong>Gut-load:</strong> Feed insects quality diet 12–24 hours before feeding</li>
+              <li><strong>Water:</strong> Fresh shallow dish, changed daily</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🤚 Handling &amp; Temperament</h4>
+            <ul>
+              <li>Generally docile, inquisitive, rarely bite</li>
+              <li>Wait 2+ weeks after bringing home before handling</li>
+              <li>Support from underneath — <strong>NEVER grab the tail</strong> (they drop them)</li>
+              <li>Keep sessions to 10–15 minutes</li>
+              <li><strong>Stress signs:</strong> Tail waving, rapid breathing, glass surfing, refusing food, tail drop</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🏥 Health Concerns</h4>
+            <ul>
+              <li><strong>Metabolic Bone Disease (MBD):</strong> Rubbery jaw, bowed limbs, tremors. From insufficient calcium/D3/UVB.</li>
+              <li><strong>Stuck shed:</strong> Retained skin on toes, tail, eyes. Can cause constriction necrosis.</li>
+              <li><strong>Parasites:</strong> Cryptosporidium, pinworms. Routine fecal checks recommended.</li>
+              <li><strong>Obesity:</strong> Fat deposits behind front legs ("armpit bubbles"). Reduce waxworms.</li>
+              <li><strong>Red flags:</strong> Lethargy, weight loss, swollen limbs, incomplete sheds, discolored stool.</li>
+            </ul>
+          </div>
+
+          <div class="callout callout-tip">
+            <strong>🔑 Pro Tip</strong>
+            The humid hide is NON-NEGOTIABLE. The #1 beginner mistake is skipping it. A simple Tupperware with a hole cut in the lid and damp sphagnum moss inside prevents the most common health issue new keepers face — stuck shed.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CRESTED GECKO ==================== -->
+    <div class="guide-card animate-on-scroll" id="guide-crested-gecko" data-species="crested-gecko">
+      <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+      <div class="guide-header">
+        <div class="guide-icon"><img src="images/crested-gecko.png" alt="" /></div>
+        <div class="guide-title-group">
+          <h3>Crested Gecko</h3>
+          <p class="guide-scientific">Correlophus ciliatus</p>
+          <p class="guide-intro">Arboreal, nocturnal gecko endemic to New Caledonia's tropical rainforests. Once believed extinct, rediscovered in 1994. Thrives at room temperature — one of the most heat-sensitive reptile species in the hobby.</p>
+          <div class="guide-quick-stats">
+            <span class="quick-stat"><span class="qs-icon">📏</span> 6–10 inches</span>
+            <span class="quick-stat"><span class="qs-icon">⏳</span> 15–20+ years</span>
+            <span class="quick-stat"><span class="qs-icon">⚖️</span> 35–60g</span>
+            <span class="quick-stat"><span class="qs-icon">🏠</span> Solitary only</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-grid">
+        <div>
+          <div class="guide-block">
+            <h4>🏠 Enclosure &amp; Environment</h4>
+            <ul>
+              <li><strong>Adults:</strong> Minimum 18"×18"×24" — MUST be vertically oriented (arboreal species). 24"×18"×36" or larger is ideal.</li>
+              <li><strong>Juveniles:</strong> 12"×12"×18" front-opening enclosure</li>
+              <li><strong>Substrate:</strong> Paper towels (juveniles), coconut fiber, sphagnum moss, or bioactive soil mixes. <em>Avoid</em> loose particles for hatchlings.</li>
+              <li><strong>Decor:</strong> Dense foliage (live or artificial), cork bark tubes, branches, magnetic feeding ledges at various heights. Multiple hiding spots at different levels.</li>
+              <li><strong>Housing:</strong> Solitary — territorial, must be housed individually.</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🌡️ Temperature</h4>
+            <ul>
+              <li><strong>Ideal range:</strong> 72–78°F</li>
+              <li><strong>Basking spot:</strong> 82–85°F maximum</li>
+              <li><strong>Night drop:</strong> 65–72°F (natural drop is beneficial)</li>
+              <li><strong>Heating:</strong> Low-wattage overhead source if needed. Many homes are fine at room temperature.</li>
+            </ul>
+            <div class="callout callout-danger">
+              <strong>⚠️ Critical Warning</strong>
+              Temperatures above 85°F can be LETHAL to crested geckos. This species is extremely heat-sensitive. In warm climates, focus on COOLING strategies rather than heating.
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h4>💧 Humidity</h4>
+            <ul>
+              <li><strong>Range:</strong> 60–75% with daily cycling</li>
+              <li>Mist heavily at night (spike to 80%+), allow to dry to ~50% during the day</li>
+              <li>Good ventilation prevents stagnant air</li>
+              <li>Never keep enclosure constantly wet — causes respiratory infections</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>💡 Lighting</h4>
+            <ul>
+              <li><strong>UVB:</strong> Low-level UVB (5–6% T5 linear) now recommended for optimal health and D3 synthesis</li>
+              <li><strong>Photoperiod:</strong> 12 hours light / 12 hours dark</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="guide-block">
+            <h4>🍽️ Diet &amp; Feeding</h4>
+            <ul>
+              <li><strong>Primary:</strong> Commercial Crested Gecko Diet (CGD) — Pangea or Repashy are the gold standards</li>
+              <li><strong>Insects (supplemental):</strong> Gut-loaded crickets or dubias 1–2×/week as enrichment — not required if using complete CGD</li>
+              <li><strong>Juveniles:</strong> Fresh CGD every 24–48 hours, insects 2×/week</li>
+              <li><strong>Adults:</strong> Fresh CGD every 48 hours, insects 1×/week (optional)</li>
+              <li><strong>NEVER use baby food</strong> as a CGD substitute</li>
+              <li><strong>Water:</strong> Misting provides drinking water (they lick droplets). Also offer a shallow dish.</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🤚 Handling &amp; Temperament</h4>
+            <ul>
+              <li>Generally docile and calm with individual variation — some are jumpy</li>
+              <li>Wait 2 weeks after bringing home before handling</li>
+              <li>"Hand walking" — let them move hand-to-hand</li>
+              <li><strong>Tails do NOT regenerate</strong> — drops are permanent and cosmetic only ("frog butt")</li>
+              <li><strong>Stress signs:</strong> Frantic jumping, barking/squeaking, firing down (pale color), refusing food</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🏥 Health Concerns</h4>
+            <ul>
+              <li><strong>MBD:</strong> Rubbery jaw, deformed limbs. Prevented with proper CGD + UVB.</li>
+              <li><strong>Tail drop:</strong> Permanent — no regrowth. Cosmetic only, they live normally.</li>
+              <li><strong>Respiratory infections:</strong> From excessive constant humidity, poor ventilation.</li>
+              <li><strong>Stuck shed:</strong> Especially on toes — can cause toe loss.</li>
+              <li><strong>Floppy Tail Syndrome:</strong> Tail hangs over back during rest. Related to sleeping positions on glass.</li>
+              <li><strong>Red flags:</strong> Weight loss, wobbly movement, mouth gaping, discharge, loss of toes.</li>
+            </ul>
+          </div>
+
+          <div class="callout callout-tip">
+            <strong>🔑 Pro Tip</strong>
+            Temperature kills cresties — literally. The #1 mistake is overheating. Unlike most reptiles, crested geckos thrive at room temperature in most homes. If you live in a warm climate, invest in cooling (AC, fans) rather than heating.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BALL PYTHON ==================== -->
+    <div class="guide-card animate-on-scroll" id="guide-ball-python" data-species="ball-python">
+      <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+      <div class="guide-header">
+        <div class="guide-icon"><img src="images/ball-python.png" alt="" /></div>
+        <div class="guide-title-group">
+          <h3>Ball Python</h3>
+          <p class="guide-scientific">Python regius</p>
+          <p class="guide-intro">Docile, nocturnal python native to West and Central Africa's savannas and grasslands. One of the most popular pet snakes worldwide, known for curling into a defensive ball when stressed. Can live 20–30+ years.</p>
+          <div class="guide-quick-stats">
+            <span class="quick-stat"><span class="qs-icon">📏</span> ♂ 2–3.5 ft / ♀ 3–5 ft</span>
+            <span class="quick-stat"><span class="qs-icon">⏳</span> 20–30+ years</span>
+            <span class="quick-stat"><span class="qs-icon">⚖️</span> 1,000–2,500g</span>
+            <span class="quick-stat"><span class="qs-icon">🏠</span> Solitary only</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-grid">
+        <div>
+          <div class="guide-block">
+            <h4>🏠 Enclosure &amp; Environment</h4>
+            <ul>
+              <li><strong>Adults:</strong> 4'×2'×2' (120-gallon equivalent) is the modern standard. The old 40-gallon minimum is outdated.</li>
+              <li><strong>Juveniles:</strong> Can start in 20-gallon or equivalent tubs</li>
+              <li><strong>Material:</strong> PVC enclosures strongly recommended over glass (better heat/humidity retention)</li>
+              <li><strong>Substrate:</strong> Coconut husk chips, cypress mulch, coconut fiber, or bioactive mix. <em>Avoid</em> pine, cedar (toxic), aspen (poor humidity), calcium sand.</li>
+              <li><strong>Hides:</strong> Minimum 2 secure, snug-fitting hides (warm + cool side). Add cork bark, branches, plants for clutter — snakes feel insecure in empty enclosures.</li>
+              <li><strong>Water:</strong> Large, sturdy, tip-resistant bowl</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🌡️ Temperature</h4>
+            <ul>
+              <li><strong>Basking spot:</strong> 88–92°F</li>
+              <li><strong>Warm side:</strong> 85–90°F</li>
+              <li><strong>Cool side:</strong> 75–80°F</li>
+              <li><strong>Night drop:</strong> To 72–75°F</li>
+              <li><strong>Heating:</strong> Overhead (halogen, deep heat projector, or CHE). ALWAYS on a thermostat. Avoid heat rocks (burn risk).</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>💧 Humidity</h4>
+            <ul>
+              <li><strong>Ambient:</strong> 60–70%</li>
+              <li><strong>Shedding:</strong> Bump to 70–80%. Humid hide with damp moss helps.</li>
+              <li>PVC enclosures hold humidity far better than glass</li>
+              <li>Healthy shed should come off in one complete piece</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>💡 Lighting</h4>
+            <ul>
+              <li><strong>UVB:</strong> Now recommended — low-output T5 HO (5–7% UVB). Provide shade/hides for self-regulation.</li>
+              <li><strong>Photoperiod:</strong> 12 hours light / 12 hours dark</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="guide-block">
+            <h4>🍽️ Diet &amp; Feeding</h4>
+            <ul>
+              <li><strong>Food:</strong> Whole rodents — mice (juveniles) transitioning to rats</li>
+              <li><strong>Frozen-thawed STRONGLY recommended</strong> over live (prevents injury)</li>
+              <li><strong>Hatchlings:</strong> Every 5–7 days</li>
+              <li><strong>Sub-adults:</strong> Every 7–10 days</li>
+              <li><strong>Adults:</strong> Every 10–14 days</li>
+              <li><strong>Size:</strong> ~10–15% body weight, roughly the width of the thickest part of the body</li>
+              <li><strong>Supplements:</strong> NOT required — whole prey is nutritionally complete</li>
+              <li><strong>Water:</strong> Large bowl, changed every 2–3 days minimum</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🤚 Handling &amp; Temperament</h4>
+            <ul>
+              <li>Generally docile, calm, shy — one of the most handleable snakes</li>
+              <li>Allow 5–7 days to settle before first handling</li>
+              <li><strong>No handling 48–72 hours after feeding</strong> (prevents regurgitation)</li>
+              <li>Approach from the side, not above (overhead = predator)</li>
+              <li>Use hook/tap training to distinguish handling from feeding</li>
+              <li><strong>Stress signs:</strong> Balling up, hissing, striking, musking, excessive soaking</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🏥 Health Concerns</h4>
+            <ul>
+              <li><strong>Respiratory infections:</strong> Wheezing, clicking, mucus bubbles. From low temps or excess humidity.</li>
+              <li><strong>Shed issues:</strong> Retained eye caps, incomplete sheds. From low humidity.</li>
+              <li><strong>Mites:</strong> Tiny black specks, excessive soaking. Treat immediately.</li>
+              <li><strong>Mouth rot (Stomatitis):</strong> Swollen gums, pus.</li>
+              <li><strong>Nidovirus / IBD:</strong> Fatal viral diseases. Strict quarantine for new arrivals.</li>
+              <li><strong>Red flags:</strong> Wheezing, stargazing, regurgitation, weight loss.</li>
+            </ul>
+          </div>
+
+          <div class="callout callout-tip">
+            <strong>🔑 Pro Tip</strong>
+            Ball pythons go off feed — it's NORMAL. Healthy balls commonly refuse food for weeks or months (especially males in winter). If husbandry is correct and weight is stable, DON'T PANIC. Verify temps and humidity first, then be patient. Never force-feed.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== BLOOD PYTHON ==================== -->
+    <div class="guide-card animate-on-scroll" id="guide-blood-python" data-species="blood-python">
+      <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+      <div class="guide-header">
+        <div class="guide-icon"><img src="images/blood-python.png" alt="" /></div>
+        <div class="guide-title-group">
+          <h3>Blood Python</h3>
+          <p class="guide-scientific">Python brongersmai</p>
+          <p class="guide-intro">Heavy-bodied python from Southeast Asia's tropical lowlands — marshes, swamps, and forest floors. One of the heaviest pythons relative to length (15–30+ lbs). Historically misunderstood as "aggressive" — captive-bred animals are often calm and docile.</p>
+          <div class="guide-quick-stats">
+            <span class="quick-stat"><span class="qs-icon">📏</span> 4–6 ft</span>
+            <span class="quick-stat"><span class="qs-icon">⏳</span> 20–25+ years</span>
+            <span class="quick-stat"><span class="qs-icon">⚖️</span> 15–30+ lbs</span>
+            <span class="quick-stat"><span class="qs-icon">🏠</span> Solitary only</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-grid">
+        <div>
+          <div class="guide-block">
+            <h4>🏠 Enclosure &amp; Environment</h4>
+            <ul>
+              <li><strong>Adults:</strong> 48"×24"×24" minimum. PVC or wooden vivariums strongly recommended.</li>
+              <li><strong>Juveniles:</strong> Can start in smaller tubs (helps them feel secure)</li>
+              <li><strong>Substrate:</strong> Cypress mulch (top choice), large coconut husk chips. <em>Avoid</em> small coco chips (can cause stomatitis), pine/cedar.</li>
+              <li><strong>Hides:</strong> Multiple secure, opaque, snug-fitting hides. Opaque enclosure walls reduce stress.</li>
+              <li><strong>Water:</strong> Large, heavy, tip-resistant bowl big enough to soak in</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🌡️ Temperature</h4>
+            <ul>
+              <li><strong>Basking spot:</strong> 84–88°F</li>
+              <li><strong>Warm side:</strong> 82–88°F</li>
+              <li><strong>Cool side:</strong> 76–80°F</li>
+              <li><strong>Night drop:</strong> To 72–75°F</li>
+              <li><strong>Heating:</strong> Overhead radiant heat on thermostat. Deep heat projectors or CHE work well in PVC.</li>
+            </ul>
+            <div class="callout callout-danger">
+              <strong>⚠️ Critical Warning</strong>
+              Blood pythons are EXTREMELY sensitive to overheating. Temperatures above 90°F cause rapid dehydration, food refusal, defensive behavior, and potentially death. Always use a thermostat. When in doubt, cooler is safer.
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h4>💧 Humidity</h4>
+            <ul>
+              <li><strong>Range:</strong> 60–75%</li>
+              <li><strong>Shedding:</strong> Bump to 75–80%</li>
+              <li>Good ventilation is CRITICAL — stale, wet conditions cause RIs and scale rot</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>💡 Lighting</h4>
+            <ul>
+              <li><strong>UVB:</strong> Recommended — low-strength (Arcadia Forest 6% or Zoo Med 5.0). Ample retreat areas required.</li>
+              <li><strong>Photoperiod:</strong> 12 hours light / 12 hours dark</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="guide-block">
+            <h4>🍽️ Diet &amp; Feeding</h4>
+            <ul>
+              <li><strong>Food:</strong> Appropriately sized rats (adults), mice (babies/juveniles)</li>
+              <li><strong>Frozen-thawed strongly recommended</strong></li>
+              <li><strong>Juveniles:</strong> Every 7–10 days</li>
+              <li><strong>Sub-adults:</strong> Every 10–14 days</li>
+              <li><strong>Adults:</strong> Every 14–28 days (sedentary species — easily become obese!)</li>
+              <li><strong>Size:</strong> Width of thickest part of body</li>
+              <li><strong>Supplements:</strong> NOT required</li>
+            </ul>
+            <div class="callout callout-warning">
+              <strong>⚠️ Obesity Warning</strong>
+              Blood pythons are sedentary ambush predators. Overfeeding is one of the most common keeper mistakes. Feed conservatively and monitor body condition regularly.
+            </div>
+          </div>
+
+          <div class="guide-block">
+            <h4>🤚 Handling &amp; Temperament</h4>
+            <ul>
+              <li>The "aggressive" reputation is largely outdated for captive-bred animals</li>
+              <li>Use <strong>hook/tap training</strong> — gently touch before picking up to distinguish from feeding</li>
+              <li>Be CONFIDENT — deliberate, smooth movements. Hesitation causes defensive strikes.</li>
+              <li>Support their ENTIRE heavy body — never dangle</li>
+              <li>A nervous blood python is usually telling you something is wrong with husbandry</li>
+              <li><strong>Stress signs:</strong> Huffing/hissing, S-posture, tail vibrating, musking</li>
+            </ul>
+          </div>
+
+          <div class="guide-block">
+            <h4>🏥 Health Concerns</h4>
+            <ul>
+              <li><strong>Respiratory infections:</strong> VERY prone. From cold, stale, or overly wet conditions.</li>
+              <li><strong>Obesity:</strong> Sedentary + overfeeding. Monitor body condition closely.</li>
+              <li><strong>IBD:</strong> Fatal viral disease. Strict quarantine essential.</li>
+              <li><strong>Mouth rot (Stomatitis):</strong> From poor hygiene, stress, improper temps.</li>
+              <li><strong>Scale rot:</strong> From sitting in wet, dirty substrate.</li>
+              <li><strong>Red flags:</strong> Wheezing, stargazing, discolored scales, chronic food refusal.</li>
+            </ul>
+          </div>
+
+          <div class="callout callout-tip">
+            <strong>🔑 Pro Tip</strong>
+            Keep it cool and simple. Most new keepers apply "standard python" temps (90°F+ basking), which makes bloods defensive, dehydrated, and sick. They thrive at temperatures that feel "cool" for pythons. A nervous blood python usually means the husbandry needs fixing, not that the animal is inherently aggressive.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FEEDER COLONIES
+     ============================================================ -->
+<section class="feeders-section" id="feeders">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Colony Management</div>
+      <h2>Feeder Colonies</h2>
+      <p>Breeding and maintaining healthy feeder colonies for your reptiles</p>
+    </div>
+
+    <div class="feeders-grid">
+
+      <!-- DUBIA ROACHES -->
+      <div class="feeder-card animate-on-scroll" id="guide-dubia-roaches" data-species="dubia-roaches">
+        <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+        <div class="feeder-header">
+          <div class="feeder-emoji">🪳</div>
+          <div>
+            <h3>Dubia Roach Colony</h3>
+            <p class="feeder-scientific">Blaptica dubia</p>
+          </div>
+        </div>
+
+        <div class="feeder-content">
+          <p class="card-desc">Premier feeder insect — high protein (~22%), low chitin, good meat-to-shell ratio. Don't fly, can't climb smooth surfaces, don't chirp, minimal odor. Available in a wide range of sizes from nymph to adult.</p>
+
+          <h4>🏠 Colony Setup</h4>
+          <ul>
+            <li><strong>Container:</strong> Dark (opaque) smooth-sided plastic bin, 20–40 gallons</li>
+            <li><strong>Hides:</strong> Egg crates stacked VERTICALLY — provides surface area and easy harvesting</li>
+            <li><strong>Ventilation:</strong> Cut holes in lid, cover with METAL screening (they chew through plastic mesh)</li>
+            <li><strong>NO substrate needed</strong> — bare bottom makes cleaning easier</li>
+          </ul>
+
+          <h4>🌡️ Temperature &amp; Humidity</h4>
+          <ul>
+            <li><strong>Temperature:</strong> 85–95°F for breeding. Below 70°F, reproduction stops almost completely.</li>
+            <li><strong>Humidity:</strong> 40–60%. Too wet = mold and mites. Water crystals provide hydration without excess moisture.</li>
+            <li>Use heat mat/tape on thermostat. Mount on side of bin, never directly on carpet.</li>
+          </ul>
+
+          <h4>🥬 Diet &amp; Gut-Loading</h4>
+          <ul>
+            <li><strong>Colony diet:</strong> Commercial roach chow or oats/grains. Fresh produce rotated: carrots, sweet potatoes, apples, squash, leafy greens.</li>
+            <li><strong>Gut-load (24–48 hrs before feeding to reptile):</strong> Calcium-rich foods — collard greens, mustard greens, butternut squash, carrots.</li>
+            <li><strong>Avoid:</strong> Spinach (blocks calcium), citrus, pesticide-treated produce</li>
+            <li>Remove uneaten fresh food daily before mold develops</li>
+          </ul>
+
+          <h4>🐣 Breeding</h4>
+          <ul>
+            <li><strong>Ratio:</strong> 1 male : 3–5 females. Males have full wings; females have vestigial stubs.</li>
+            <li>Ovoviviparous — live birth, ~20–40 nymphs per clutch, ~65-day gestation</li>
+            <li>Colony takes 3–6 months to become self-sustaining. Patience required!</li>
+          </ul>
+
+          <h4>🧹 Maintenance</h4>
+          <ul>
+            <li>Remove dead roaches and frass every 2–4 weeks</li>
+            <li>Replace soiled egg crates as needed</li>
+            <li>Full bin cleanout every 2–3 months</li>
+            <li>Water crystals refreshed every 2–3 days</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <strong>🔑 Pro Tip</strong>
+            Heat is EVERYTHING for Dubia breeding. A colony at 75°F barely reproduces. A colony at 90°F explodes with babies. The #1 reason people say "my colony isn't working" is insufficient heat. Also: wear gloves + N95 mask when cleaning — roach frass is a common allergen.
+          </div>
+        </div>
+      </div>
+
+      <!-- CRICKETS -->
+      <div class="feeder-card animate-on-scroll" id="guide-crickets" data-species="crickets">
+        <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+        <div class="feeder-header">
+          <div class="feeder-emoji">🦗</div>
+          <div>
+            <h3>Cricket Colony</h3>
+            <p class="feeder-scientific">Acheta domesticus</p>
+          </div>
+        </div>
+
+        <div class="feeder-content">
+          <p class="card-desc">Classic feeder insect — high protein (~20%), active movement triggers feeding response. Higher chitin than dubias. Must be dusted with calcium and gut-loaded. Note: consider <em>Gryllodes sigillatus</em> (Banded Cricket) as a virus-resistant alternative.</p>
+
+          <h4>🏠 Colony Setup</h4>
+          <ul>
+            <li><strong>Container:</strong> Large plastic bin or glass tank (10–20 gal minimum) with secure, ventilated lid. Crickets are expert jumpers!</li>
+            <li><strong>Bottom:</strong> Keep DRY — bare or paper towels. Egg crates stacked vertically for surface area.</li>
+            <li><strong>Egg laying:</strong> Separate shallow dish with damp coconut fiber or vermiculite</li>
+            <li><strong>Ventilation:</strong> Critical — cut holes, cover with fine metal mesh</li>
+          </ul>
+
+          <h4>🌡️ Temperature &amp; Humidity</h4>
+          <ul>
+            <li><strong>Temperature:</strong> 75–85°F for growth and breeding</li>
+            <li><strong>Humidity:</strong> Keep LOW — 50–60%. Excess moisture = odor, mold, disease, die-offs.</li>
+            <li>Provide moisture through food items, NOT spraying</li>
+          </ul>
+
+          <h4>🥬 Diet &amp; Gut-Loading</h4>
+          <ul>
+            <li><strong>Colony diet:</strong> Commercial cricket food, fresh vegetables, oats/grains</li>
+            <li><strong>Gut-load (6–24 hrs before feeding):</strong> Collard greens, mustard greens, kale, carrots, squash. Commercial: Mazuri Better Bug, Repashy Bug Burger.</li>
+            <li><strong>Hydration:</strong> Moisture-rich veggies or damp sponge. AVOID standing water — crickets drown easily.</li>
+          </ul>
+
+          <h4>🐣 Breeding</h4>
+          <ul>
+            <li>Females (identified by ovipositor) lay eggs into moist substrate</li>
+            <li>Swap egg containers every 2–3 days, incubate at 75–85°F</li>
+            <li>Eggs hatch in 7–14 days</li>
+            <li><strong>CRITICAL:</strong> Separate by size — larger crickets WILL eat smaller ones (cannibalistic)</li>
+          </ul>
+
+          <h4>🧹 Maintenance</h4>
+          <ul>
+            <li>Remove dead crickets DAILY (prevents disease and odor)</li>
+            <li>Remove uneaten fresh food daily</li>
+            <li>Full clean at least weekly</li>
+            <li>Full sanitization after any die-off (diluted bleach, rinse thoroughly)</li>
+          </ul>
+
+          <div class="callout callout-warning">
+            <strong>⚠️ Virus Warning</strong>
+            <em>Acheta domesticus</em> Densovirus (AdDV) has devastated cricket colonies worldwide. If you experience unexplained mass die-offs, consider switching to Banded Crickets (<em>Gryllodes sigillatus</em>), which are resistant to AdDV — or start a Dubia colony instead.
+          </div>
+        </div>
+      </div>
+
+      <!-- FEEDER RATS -->
+      <div class="feeder-card animate-on-scroll" id="guide-feeder-rats" data-species="feeder-rats">
+        <button class="card-print-btn" aria-label="Print only this care sheet" title="Print Care Sheet">🖨️ Print Sheet</button>
+        <div class="feeder-header">
+          <div class="feeder-emoji">🐀</div>
+          <div>
+            <h3>Feeder Rat Colony</h3>
+            <p class="feeder-scientific">Rattus norvegicus</p>
+          </div>
+        </div>
+
+        <div class="feeder-content">
+          <p class="card-desc">Complete whole-prey nutrition — protein (~58% dry), fat (~28% dry), calcium from bones. No supplementation needed for snakes fed whole prey. Available sizes from pinky (~5g) to jumbo adult (500g+).</p>
+
+          <h4>🏠 Colony Setup</h4>
+          <ul>
+            <li><strong>Housing:</strong> Solid-floor cages (avoid wire mesh — causes bumblefoot). Must be escape-proof.</li>
+            <li><strong>Bedding:</strong> Recycled paper bedding or aspen shavings. <strong>AVOID:</strong> Cedar and pine (toxic aromatic oils cause respiratory disease).</li>
+            <li><strong>Ventilation:</strong> Essential — ammonia buildup from urine is toxic. Never use sealed containers.</li>
+          </ul>
+
+          <h4>🌡️ Temperature &amp; Humidity</h4>
+          <ul>
+            <li><strong>Temperature:</strong> 65–79°F (room temperature generally fine)</li>
+            <li><strong>Humidity:</strong> 40–70% (standard indoor levels)</li>
+            <li>Ammonia from waste is the biggest environmental concern — ventilate well</li>
+          </ul>
+
+          <h4>🥬 Diet</h4>
+          <ul>
+            <li><strong>Staple:</strong> High-quality rodent blocks/lab chow (Mazuri, Oxbow, Teklad)</li>
+            <li><strong>Supplemental:</strong> Small amounts of fresh vegetables, fruits, grains</li>
+            <li><strong>AVOID:</strong> Dog food, cat food, or meat-based diets</li>
+            <li><strong>Water:</strong> Constant access via sipper bottles (not open dishes — they get soiled instantly). Check daily.</li>
+            <li>Healthy rats = healthier snakes. Diet directly impacts nutritional quality.</li>
+          </ul>
+
+          <h4>🐣 Breeding</h4>
+          <ul>
+            <li><strong>System:</strong> 1 male : 3–5 females per breeding group</li>
+            <li><strong>Never cohouse adult males</strong> (they fight, sometimes fatally)</li>
+            <li><strong>Gestation:</strong> 21–23 days, litter of 6–14 pups average</li>
+            <li><strong>Weaning:</strong> 21–25 days. Separate by sex at weaning.</li>
+            <li>Remove pregnant females to private nursing cages before birth</li>
+          </ul>
+
+          <h4>🧹 Maintenance</h4>
+          <ul>
+            <li>Spot-clean bedding daily, full change 1–2×/week</li>
+            <li>Check water bottles daily for function</li>
+            <li>Monitor colony daily for health issues</li>
+            <li>Maintain detailed breeding records</li>
+            <li>Humanely euthanize using approved methods (CO2 per AVMA guidelines)</li>
+          </ul>
+
+          <div class="callout callout-info">
+            <strong>ℹ️ Should You Start a Colony?</strong>
+            Breeding feeder rats is a significant commitment of time, space, money, and emotional energy. For keepers with fewer than 5–10 snakes, buying frozen feeders in bulk is almost always more practical and cost-effective. Only start a colony if you have enough snakes to consume the output.
+          </div>
+
+          <div class="callout callout-warning">
+            <strong>⚠️ Ethical Note</strong>
+            Even feeder animals deserve clean housing, proper diet, and humane treatment throughout their lives. This is not optional — it's the baseline for responsible keeping.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /feeders-grid -->
+  </div>
+</section>
+
+<!-- ============================================================
+     DISCLAIMER
+     ============================================================ -->
+<section class="disclaimer-section">
+  <div class="container">
+    <div class="disclaimer-box animate-on-scroll">
+      <div class="disclaimer-icon" aria-hidden="true">⚕️</div>
+      <div>
+        <h3>Important Disclaimer</h3>
+        <p>This information represents current husbandry consensus and is meant as a solid baseline for responsible care. Individual animals may have specific needs based on age, health, genetics, and history. <strong>When in doubt, consult an experienced keeper or reptile-savvy veterinarian.</strong> This page is a living document and may be updated as standards evolve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>🦎 Chaos Creature Rescue</h3>
+        <p>Research-backed care and husbandry guides for reptiles and feeder colonies. Designed for new keepers, adopters, and rescue partners.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#species">Species Library</a></li>
+          <li><a href="#guides">Care Guides</a></li>
+          <li><a href="#feeders">Feeder Colonies</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">📸 Instagram</a></li>
+          <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">👥 Facebook</a></li>
+          <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">🎥 YouTube</a></li>
+          <li><a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">🎵 TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Chaos Creature Rescue &bull; Care &amp; Husbandry Library</p>
+      <p>Built with ❤️ for every creature in our care</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
