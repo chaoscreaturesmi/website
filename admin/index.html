@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Chaos Creatures Administrative Portal — Animal husbandry, genetics pairing tracker, and facility operations board." />
+  <meta name="theme-color" content="#06080d" />
+
+  <title>Chaos Creatures · Administrative Portal</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js for beautiful charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- ============================================================
+       LOGIN SCREEN
+       ============================================================ -->
+  <div class="login-container" id="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <span class="login-logo">🧬</span>
+        <h2 class="login-title">Chaos Creatures</h2>
+        <p class="login-subtitle">Facility Administrative Portal</p>
+      </div>
+
+      <div class="login-error" id="login-error">Invalid handler credentials. Please try again.</div>
+
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="username">Select Handler / Admin</label>
+          <div class="input-wrapper">
+            <select class="form-input" id="username" required>
+              <option value="Admin">System Administrator</option>
+              <option value="Handler A">Lead Breeder (Handler A)</option>
+              <option value="Handler B">Facility Assistant (Handler B)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Security Password</label>
+          <div class="input-wrapper">
+            <input class="form-input" type="password" id="password" placeholder="••••••••" required />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          <span>Sign In to System</span>
+          <span>➜</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN APPLICATION LAYOUT (HIDDEN UNTIL AUTHENTICATED)
+       ============================================================ -->
+  <div class="app-container" id="app-container" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">🧬</span>
+        <div class="sidebar-brand">
+          <h3>Chaos Creatures</h3>
+          <span>Breeding Herd Portal</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-link active" onclick="switchView('dashboard')" id="nav-dashboard">
+          <span class="nav-link-icon">📊</span>
+          <span>Executive Board</span>
+        </div>
+        <div class="nav-link" onclick="switchView('animals')" id="nav-animals">
+          <span class="nav-link-icon">🐍</span>
+          <span>Animal Collection</span>
+        </div>
+        <div class="nav-link" onclick="switchView('breeding')" id="nav-breeding">
+          <span class="nav-link-icon">💕</span>
+          <span>Pairings &amp; Eggs</span>
+        </div>
+        <div class="nav-link" onclick="switchView('rats')" id="nav-rats">
+          <span class="nav-link-icon">🐁</span>
+          <span>Feeder Colony</span>
+        </div>
+        <div class="nav-link" onclick="switchView('expenses')" id="nav-expenses">
+          <span class="nav-link-icon">💵</span>
+          <span>Facility Expenses</span>
+        </div>
+        <div class="nav-link" onclick="switchView('settings')" id="nav-settings">
+          <span class="nav-link-icon">⚙️</span>
+          <span>Portal Settings</span>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div class="user-avatar" id="avatar-letter">A</div>
+          <div class="user-info">
+            <span class="user-name" id="user-name-display">Administrator</span>
+            <span class="user-role" id="user-role-display">System Owner</span>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="handleLogout()">
+          <span>Logout</span>
+          <span>✕</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content">
+      <!-- Top header status bar -->
+      <header class="top-header">
+        <div class="page-title">
+          <h1 id="view-title">Executive Dashboard</h1>
+          <p id="view-subtitle">Chaos Creatures facility key performance indicators and logs.</p>
+        </div>
+        <div class="header-actions">
+          <div class="sync-status">
+            <span class="status-dot synced" id="sync-dot"></span>
+            <span id="sync-text">Live Sync (Google Sheets)</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================================
+           VIEW: DASHBOARD
+           ============================================================ -->
+      <section class="view-section" id="view-dashboard">
+        <div class="dashboard-grid">
+          <div class="kpi-card">
+            <span class="kpi-icon">🧬</span>
+            <div class="kpi-value" id="kpi-breeders">0</div>
+            <div class="kpi-label">Production Herd</div>
+            <p class="kpi-desc">Total number of active breeders currently in production.</p>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon">🐍</span>
+            <div class="kpi-value" id="kpi-animals">0</div>
+            <div class="kpi-label">Total Collection</div>
+            <p class="kpi-desc">Exact total collection count currently occupying facility racks.</p>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon">🥚</span>
+            <div class="kpi-value" id="kpi-clutches">0</div>
+            <div class="kpi-label">Eggs Cooking</div>
+            <p class="kpi-desc">Number of clutches currently cooking in the incubator.</p>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon">🍽️</span>
+            <div class="kpi-value" id="kpi-refusals">0</div>
+            <div class="kpi-label">Refusals (30D)</div>
+            <p class="kpi-desc">Collection-wide skips to highlight health or seasonal dips.</p>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-icon">💵</span>
+            <div class="kpi-value" id="kpi-expenses">$0.00</div>
+            <div class="kpi-label">YTD Expenses</div>
+            <p class="kpi-desc">Live overhead financial tracking of acquisition, rack systems, and rodents.</p>
+          </div>
+        </div>
+
+        <div class="dashboard-sections">
+          <!-- Recent Activity Log -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <h3 class="panel-title"><span>📝</span> Recent Activity Log</h3>
+              <span class="panel-action" onclick="switchView('animals')">View All Animals ➜</span>
+            </div>
+            <div class="activity-list" id="dashboard-activities">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Quick Log Form Panels -->
+          <div class="dashboard-panel" style="display:flex; flex-direction:column; gap:16px;">
+            <div class="panel-header" style="margin-bottom:8px;">
+              <h3 class="panel-title"><span>⚡</span> Quick Log Event</h3>
+            </div>
+            <button class="btn-primary" onclick="openFeedingModal()" style="background:var(--accent-subtle); border:1px solid rgba(34,197,94,0.2); color:var(--accent-light);">
+              <span>🍽️ Log Feeding Entry</span>
+            </button>
+            <button class="btn-primary" onclick="openWeightModal()" style="background:rgba(59,130,246,0.07); border:1px solid rgba(59,130,246,0.2); color:var(--accent-2-light);">
+              <span>⚖️ Log Animal Weight</span>
+            </button>
+            <button class="btn-primary" onclick="openHealthModal()" style="background:rgba(245,158,11,0.07); border:1px solid rgba(245,158,11,0.2); color:var(--warning);">
+              <span>🩺 Log Health / Shed Event</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           VIEW: ANIMALS INVENTORY
+           ============================================================ -->
+      <section class="view-section" id="view-animals" style="display: none;">
+        <div class="control-bar">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="animal-search" placeholder="Search by ID, Name, or Morph..." oninput="renderAnimalsTable()" />
+          </div>
+
+          <div class="filter-group">
+            <select class="filter-select" id="filter-species" onchange="renderAnimalsTable()">
+              <option value="">All Species</option>
+              <option value="Ball Python">Ball Python</option>
+              <option value="Red Blood Python">Red Blood Python</option>
+              <option value="Leopard Gecko">Leopard Gecko</option>
+              <option value="Crested Gecko">Crested Gecko</option>
+              <option value="Rat Snake">Rat Snake</option>
+            </select>
+
+            <select class="filter-select" id="filter-status" onchange="renderAnimalsTable()">
+              <option value="">All Statuses</option>
+              <option value="Breeder">Active Breeder</option>
+              <option value="Retired">Retired</option>
+              <option value="None">None</option>
+            </select>
+
+            <select class="filter-select" id="filter-alert" onchange="renderAnimalsTable()">
+              <option value="">All Alerts</option>
+              <option value="Hungry">Hungry</option>
+              <option value="OK">OK</option>
+            </select>
+
+            <button class="btn-secondary" onclick="openAddAnimalModal()">
+              <span>＋</span> Add Animal
+            </button>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table" id="animals-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Morph / Genes</th>
+                <th>Sex</th>
+                <th>Weight (g)</th>
+                <th>Rack/Tub</th>
+                <th>Last Fed</th>
+                <th>Alert Status</th>
+                <th>Trend</th>
+              </tr>
+            </thead>
+            <tbody id="animals-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           VIEW: BREEDING & PAIRINGS
+           ============================================================ -->
+      <section class="view-section" id="view-breeding" style="display: none;">
+        <div class="control-bar">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="breeding-search" placeholder="Search pairings..." oninput="renderBreedingTable()" />
+          </div>
+          <div class="filter-group">
+            <button class="btn-secondary" onclick="openAddPairingModal()">
+              <span>＋</span> Create Pairing
+            </button>
+            <button class="btn-secondary" onclick="openAddClutchModal()">
+              <span>＋</span> Record Clutch
+            </button>
+          </div>
+        </div>
+
+        <div class="tab-group">
+          <div class="tab-nav">
+            <button class="tab-btn active" id="tab-btn-pairings" onclick="switchBreedingTab('pairings')">Active &amp; Past Pairings</button>
+            <button class="tab-btn" id="tab-btn-clutches" onclick="switchBreedingTab('clutches')">Egg Clutches</button>
+            <button class="tab-btn" id="tab-btn-hatchlings" onclick="switchBreedingTab('hatchlings')">Hatchlings Log</button>
+          </div>
+        </div>
+
+        <!-- Breeding Tab: Pairings -->
+        <div class="breeding-tab-content active" id="breeding-pairings-tab">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Sire (Male)</th>
+                  <th>Dam (Female)</th>
+                  <th>Species</th>
+                  <th>Start Date</th>
+                  <th>Locks Seen</th>
+                  <th>Ovulation</th>
+                  <th>Lay Date</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="pairings-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Breeding Tab: Clutches -->
+        <div class="breeding-tab-content" id="breeding-clutches-tab" style="display:none;">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Clutch ID</th>
+                  <th>Pairing ID</th>
+                  <th>Sire</th>
+                  <th>Dam</th>
+                  <th>Eggs</th>
+                  <th>Slugs</th>
+                  <th>Incubating Start</th>
+                  <th>Est Hatch</th>
+                  <th>Hatch Date</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="clutches-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Breeding Tab: Hatchlings -->
+        <div class="breeding-tab-content" id="breeding-hatchlings-tab" style="display:none;">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Baby ID</th>
+                  <th>Clutch ID</th>
+                  <th>Egg #</th>
+                  <th>Actual Morph</th>
+                  <th>Sex</th>
+                  <th>Hatch Date</th>
+                  <th>First Meal</th>
+                  <th>Status</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="hatchlings-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           VIEW: FEEDER COLONY (RATS)
+           ============================================================ -->
+      <section class="view-section" id="view-rats" style="display: none;">
+        <div class="control-bar">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="rat-search" placeholder="Search rodent colony..." oninput="renderRatsTable()" />
+          </div>
+          <button class="btn-secondary" onclick="openAddRatModal()">
+            <span>＋</span> Add Breeder Rat
+          </button>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Colony</th>
+                <th>Sex</th>
+                <th>Breeding Status</th>
+                <th>Litters</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="rats-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           VIEW: EXPENSES
+           ============================================================ -->
+      <section class="view-section" id="view-expenses" style="display: none;">
+        <div class="control-bar">
+          <div class="filter-group">
+            <select class="filter-select" id="filter-expense-cat" onchange="renderExpenses()">
+              <option value="">All Categories</option>
+              <option value="Rodents">Rodents</option>
+              <option value="Substrate">Substrate</option>
+              <option value="Enrichment/Care">Enrichment/Care</option>
+              <option value="Electricity">Electricity</option>
+              <option value="Racks">Racks</option>
+              <option value="Vet">Vet</option>
+              <option value="Shipping">Shipping</option>
+            </select>
+          </div>
+          <button class="btn-secondary" onclick="openAddExpenseModal()">
+            <span>＋</span> Log Expense
+          </button>
+        </div>
+
+        <div class="dashboard-sections">
+          <!-- Expenses table -->
+          <div class="table-wrapper" style="margin-bottom:0;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Item</th>
+                  <th>Cost</th>
+                  <th>Vendor</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="expenses-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Expenses Chart / Breakdown -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">💵 Category Breakdown</h3>
+            </div>
+            <div style="position:relative; width:100%; height:220px; display:flex; align-items:center; justify-content:center;">
+              <canvas id="expenses-chart"></canvas>
+            </div>
+            <div id="expenses-chart-legend" style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
+              <!-- Generated legend -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           VIEW: SETTINGS
+           ============================================================ -->
+      <section class="view-section" id="view-settings" style="display: none;">
+        <div class="settings-section">
+          <h3 class="settings-title">Data Storage Source</h3>
+          <p class="settings-desc">Choose whether the portal reads from local browser storage or syncs in real-time with your Google Spreadsheet.</p>
+          <div class="form-group">
+            <label class="form-label" for="setting-data-source">Sync Method</label>
+            <select class="form-input" id="setting-data-source" onchange="toggleSettingsSyncPanel()" style="max-width:300px;">
+              <option value="local">Local Browser Database (IndexedDB / Sandbox)</option>
+              <option value="google-read">Google Sheets Sync (Live Fetch via CSV)</option>
+              <option value="google-write">Google Sheets Sync + Apps Script Write Back API</option>
+            </select>
+          </div>
+
+          <!-- Google Spreadsheet URL fields -->
+          <div id="settings-google-fields" style="display:none; border-top:1px solid var(--border); padding-top:20px; margin-top:20px;">
+            <div class="form-group">
+              <label class="form-label" for="setting-sheet-id">Google Sheet URL or Spreadsheet ID</label>
+              <input type="text" class="form-input" id="setting-sheet-id" placeholder="1D90PWhngCl7uTmpDQBG8epAvr52pql9Ix2mXc4qbEY8" style="max-width:550px;" oninput="saveSettings()" />
+              <p class="form-label" style="text-transform:none; font-size:0.75rem; margin-top:6px; color:var(--text-secondary);">The Spreadsheet must be shared as "Anyone with the link can view".</p>
+            </div>
+
+            <div class="form-group write-api-field" style="display:none;">
+              <label class="form-label" for="setting-api-url">Google Apps Script Web App API URL</label>
+              <input type="text" class="form-input" id="setting-api-url" placeholder="https://script.google.com/macros/s/.../exec" style="max-width:550px;" oninput="saveSettings()" />
+              <p class="form-label" style="text-transform:none; font-size:0.75rem; margin-top:6px; color:var(--text-secondary);">Paste the deployed Web App URL from your Extensions -> Apps Script.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-section write-api-field" style="display:none;">
+          <h3 class="settings-title">Apps Script API Configuration</h3>
+          <p class="settings-desc">To write data directly from this dashboard to your Google Spreadsheet, copy this script and install it in your Google Spreadsheet.</p>
+          <div class="code-block" id="apps-script-code">
+// 1. Open your Spreadsheet
+// 2. Go to Extensions -> Apps Script
+// 3. Paste this code and click Save
+// 4. Click Deploy -> New Deployment
+// 5. Select type: Web App
+// 6. Set "Execute as": Me
+// 7. Set "Who has access": Anyone
+// 8. Deploy, authorize, and copy the Web App URL into the setting above.
+
+function doPost(e) {
+  var responseHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type"
+  };
+  
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var sheetName = data.sheetName;
+    var rowData = data.rowData;
+    
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName(sheetName);
+    if (!sheet) {
+      return ContentService.createTextOutput(JSON.stringify({status: 'error', message: 'Sheet not found'}))
+                           .setMimeType(ContentService.MimeType.JSON)
+                           .setHeaders(responseHeaders);
+    }
+    
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    if (sheetName === 'Health Notes') {
+      headers = sheet.getRange(2, 1, 1, sheet.getLastColumn()).getValues()[0];
+    }
+    
+    var newRow = [];
+    for (var i = 0; i < headers.length; i++) {
+      var header = headers[i];
+      var cellVal = rowData[header];
+      if (cellVal === undefined || cellVal === null) cellVal = '';
+      newRow.push(cellVal);
+    }
+    
+    sheet.appendRow(newRow);
+    return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders(responseHeaders);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({status: 'error', message: err.toString()}))
+                         .setMimeType(ContentService.MimeType.JSON)
+                         .setHeaders(responseHeaders);
+  }
+}
+
+function doOptions(e) {
+  return ContentService.createTextOutput("")
+                       .setHeaders({
+                         "Access-Control-Allow-Origin": "*",
+                         "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+                         "Access-Control-Allow-Headers": "Content-Type",
+                         "Access-Control-Max-Age": "86400"
+                       });
+}
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3 class="settings-title">Security &amp; Portability</h3>
+          <p class="settings-desc">Manage admin login security and database synchronization.</p>
+          <div style="display:flex; gap:16px;">
+            <button class="btn-secondary" onclick="exportDatabaseJSON()">📥 Export Sandbox JSON</button>
+            <button class="btn-secondary" onclick="triggerImportJSON()">📤 Import Sandbox JSON</button>
+            <input type="file" id="import-json-file" accept=".json" style="display:none;" onchange="importDatabaseJSON(event)" />
+            <button class="btn-secondary" onclick="resetSandboxToInitial()" style="color:var(--danger); border-color:rgba(239,68,68,0.2);">⚠️ Reset to Defaults</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ============================================================
+       MODAL OVERLAYS (Husbandry Forms)
+       ============================================================ -->
+
+  <!-- Modal: Animal Detail Profile -->
+  <div class="modal-overlay" id="modal-animal-profile" onclick="closeModalOnOverlay(event, 'modal-animal-profile')">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="profile-title-id">Animal Profile</h3>
+        <span class="modal-close" onclick="closeModal('modal-animal-profile')">✕</span>
+      </div>
+      <div class="modal-body">
+        <div class="profile-grid">
+          <!-- Sidebar column -->
+          <div class="profile-sidebar">
+            <div class="profile-card-simple">
+              <div class="profile-avatar" id="profile-avatar-emoji">🐍</div>
+              <h4 class="profile-name" id="profile-name">Lilith</h4>
+              <p class="profile-species" id="profile-species">Ball Python</p>
+              <div class="profile-meta-list">
+                <div class="profile-meta-item">
+                  <span class="profile-meta-label">Status</span>
+                  <span class="profile-meta-value" id="profile-status">Retired</span>
+                </div>
+                <div class="profile-meta-item">
+                  <span class="profile-meta-label">Sex</span>
+                  <span class="profile-meta-value" id="profile-sex">Female</span>
+                </div>
+                <div class="profile-meta-item">
+                  <span class="profile-meta-label">Hatch Date</span>
+                  <span class="profile-meta-value" id="profile-hatch">2020-10-31</span>
+                </div>
+                <div class="profile-meta-item">
+                  <span class="profile-meta-label">Rack/Tub</span>
+                  <span class="profile-meta-value" id="profile-rack">T3</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Actions -->
+            <button class="btn-primary" onclick="openFeedingModalFromProfile()" style="padding:10px; font-size:0.85rem;">🍽️ Feed Animal</button>
+            <button class="btn-primary" onclick="openWeightModalFromProfile()" style="padding:10px; font-size:0.85rem; background:var(--accent-2);">⚖️ Log Weight</button>
+            <button class="btn-primary" onclick="openHealthModalFromProfile()" style="padding:10px; font-size:0.85rem; background:var(--warning);">🩺 Log Health Note</button>
+          </div>
+
+          <!-- Main column -->
+          <div>
+            <div class="tab-group">
+              <div class="tab-nav">
+                <button class="tab-btn active" id="tab-btn-growth" onclick="switchProfileTab('growth')">Growth &amp; Weight</button>
+                <button class="tab-btn" id="tab-btn-feedings" onclick="switchProfileTab('feedings')">Feed Logs</button>
+                <button class="tab-btn" id="tab-btn-events" onclick="switchProfileTab('events')">Health Events</button>
+                <button class="tab-btn" id="tab-btn-qr" onclick="switchProfileTab('qr')">QR Tags</button>
+              </div>
+            </div>
+
+            <!-- Tab: Growth Chart -->
+            <div class="profile-tab-content active" id="profile-growth-tab">
+              <div style="position:relative; width:100%; height:250px;">
+                <canvas id="growth-chart"></canvas>
+              </div>
+              <div class="table-wrapper" style="margin-top:16px; max-height:150px; overflow-y:auto;">
+                <table class="data-table" style="font-size:0.85rem;">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Weight (g)</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="profile-weight-table-body">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Tab: Feed Logs -->
+            <div class="profile-tab-content" id="profile-feedings-tab" style="display:none;">
+              <div class="table-wrapper" style="max-height:350px; overflow-y:auto;">
+                <table class="data-table" style="font-size:0.85rem;">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Food Item</th>
+                      <th>Size</th>
+                      <th>Accepted?</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody id="profile-feedings-table-body">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Tab: Health Events -->
+            <div class="profile-tab-content" id="profile-events-tab" style="display:none;">
+              <div class="table-wrapper" style="max-height:350px; overflow-y:auto;">
+                <table class="data-table" style="font-size:0.85rem;">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Event Type</th>
+                      <th>Details / Notes</th>
+                      <th>Handler</th>
+                    </tr>
+                  </thead>
+                  <tbody id="profile-events-table-body">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Tab: QR Tags -->
+            <div class="profile-tab-content" id="profile-qr-tab" style="display:none;">
+              <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:12px;">This QR code opens the fast-log form for this animal on any mobile device. Print and tape it to the enclosure tub.</p>
+              <div class="qr-code-wrapper">
+                <h4 id="qr-label-display">BP001 - Lilith</h4>
+                <img src="" alt="QR Code" class="qr-image" id="qr-code-img" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Log Feeding -->
+  <div class="modal-overlay" id="modal-feeding" onclick="closeModalOnOverlay(event, 'modal-feeding')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">🍽️ Log Feeding Event</h3>
+        <span class="modal-close" onclick="closeModal('modal-feeding')">✕</span>
+      </div>
+      <form id="form-feeding" onsubmit="submitFeedingForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="feed-animal-id">Animal ID / Name</label>
+            <select class="form-input" id="feed-animal-id" required></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="feed-date">Date</label>
+              <input type="date" class="form-input" id="feed-date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="feed-accepted">Accepted?</label>
+              <select class="form-input" id="feed-accepted" required>
+                <option value="Yes">Yes (Feed success)</option>
+                <option value="No">No (Feed refusal)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="feed-food">Food Item</label>
+              <select class="form-input" id="feed-food" required>
+                <option value="Rat">Rat</option>
+                <option value="Mouse">Mouse</option>
+                <option value="Mealworms">Mealworms</option>
+                <option value="Superworms">Superworms</option>
+                <option value="Dubia Roaches">Dubia Roaches</option>
+                <option value="Crickets">Crickets</option>
+                <option value="CGD Powder">Crested Gecko Diet (Powder)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="feed-size">Size</label>
+              <select class="form-input" id="feed-size">
+                <option value="">None / Not Applicable</option>
+                <option value="Pinky">Pinky</option>
+                <option value="Fuzzie">Fuzzie</option>
+                <option value="Pup">Pup</option>
+                <option value="Weaned">Weaned</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="feed-notes">Notes / Observations</label>
+            <textarea class="form-input" id="feed-notes" rows="2" placeholder="Note shed status, hunger responses, etc..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-feeding')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Feeding</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Log Weight -->
+  <div class="modal-overlay" id="modal-weight" onclick="closeModalOnOverlay(event, 'modal-weight')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">⚖️ Log Animal Weight</h3>
+        <span class="modal-close" onclick="closeModal('modal-weight')">✕</span>
+      </div>
+      <form id="form-weight" onsubmit="submitWeightForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="weight-animal-id">Animal ID / Name</label>
+            <select class="form-input" id="weight-animal-id" required></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="weight-date">Date</label>
+              <input type="date" class="form-input" id="weight-date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="weight-grams">Weight (g)</label>
+              <input type="number" class="form-input" id="weight-grams" placeholder="e.g. 850" min="1" step="0.1" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="weight-notes">Notes</label>
+            <textarea class="form-input" id="weight-notes" rows="2" placeholder="e.g. Pre-shed weight, empty stomach..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-weight')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Weight</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Log Health Event -->
+  <div class="modal-overlay" id="modal-health" onclick="closeModalOnOverlay(event, 'modal-health')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">🩺 Log Health / Care Note</h3>
+        <span class="modal-close" onclick="closeModal('modal-health')">✕</span>
+      </div>
+      <form id="form-health" onsubmit="submitHealthForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="health-animal-id">Animal ID / Name</label>
+            <select class="form-input" id="health-animal-id" required></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="health-date">Date</label>
+              <input type="date" class="form-input" id="health-date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="health-event">Event Type</label>
+              <select class="form-input" id="health-event" required>
+                <option value="Shed">Shed Event</option>
+                <option value="Vet Check">Veterinary Visit</option>
+                <option value="Medication">Medication Administered</option>
+                <option value="Defecation/Muck">Defecation Check</option>
+                <option value="Injury/Alert">Physical Condition Alert</option>
+                <option value="General Check">General Health Review</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="health-notes">Details / Notes</label>
+            <textarea class="form-input" id="health-notes" rows="3" placeholder="Describe findings or medications in detail..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="health-photo">Photo Link (optional)</label>
+            <input type="url" class="form-input" id="health-photo" placeholder="https://imgur.com/image.jpg" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-health')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Animal -->
+  <div class="modal-overlay" id="modal-add-animal" onclick="closeModalOnOverlay(event, 'modal-add-animal')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">＋ Add New Animal to Collection</h3>
+        <span class="modal-close" onclick="closeModal('modal-add-animal')">✕</span>
+      </div>
+      <form id="form-add-animal" onsubmit="submitAddAnimalForm(event)">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-animal-id">Animal ID</label>
+              <input type="text" class="form-input" id="new-animal-id" placeholder="e.g. BP004" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-animal-name">Name</label>
+              <input type="text" class="form-input" id="new-animal-name" placeholder="e.g. Medusa" required />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-animal-species">Species</label>
+              <select class="form-input" id="new-animal-species" required onchange="populateMorphSuggestions()">
+                <option value="Ball Python">Ball Python</option>
+                <option value="Red Blood Python">Red Blood Python</option>
+                <option value="Leopard Gecko">Leopard Gecko</option>
+                <option value="Crested Gecko">Crested Gecko</option>
+                <option value="Rat Snake">Rat Snake</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-animal-sex">Sex</label>
+              <select class="form-input" id="new-animal-sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Unknown">Unknown</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-animal-gene1">Gene 1 (Morph)</label>
+              <select class="form-input" id="new-animal-gene1"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-animal-gene2">Gene 2 (Morph)</label>
+              <select class="form-input" id="new-animal-gene2"></select>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-animal-gene3">Gene 3 (Morph)</label>
+              <select class="form-input" id="new-animal-gene3"></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-animal-hets">Hets / Poss Hets</label>
+              <input type="text" class="form-input" id="new-animal-hets" placeholder="e.g. 50% Het Pied" />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="new-animal-hatch">Hatch Date</label>
+              <input type="date" class="form-input" id="new-animal-hatch" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-animal-rack">Rack / Tub ID</label>
+              <input type="text" class="form-input" id="new-animal-rack" placeholder="e.g. T4" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="new-animal-status">Breeding Herd Status</label>
+            <select class="form-input" id="new-animal-status" required>
+              <option value="None">None</option>
+              <option value="Breeder">Active Breeder</option>
+              <option value="Breeder/Permanent Resident">Breeder / Permanent Resident</option>
+              <option value="Retired">Retired</option>
+              <option value="Holdback">Holdback</option>
+              <option value="For Sale">For Sale</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="new-animal-notes">Notes</label>
+            <textarea class="form-input" id="new-animal-notes" rows="2" placeholder="Lineage or structural details..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-add-animal')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Animal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Pairing -->
+  <div class="modal-overlay" id="modal-add-pairing" onclick="closeModalOnOverlay(event, 'modal-add-pairing')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">💕 Log Breeder Pairing</h3>
+        <span class="modal-close" onclick="closeModal('modal-add-pairing')">✕</span>
+      </div>
+      <form id="form-add-pairing" onsubmit="submitAddPairingForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="pair-species">Species</label>
+            <select class="form-input" id="pair-species" required onchange="populateBreedingAnimalSelectors()"></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="pair-male">Sire (Male)</label>
+              <select class="form-input" id="pair-male" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pair-female">Dam (Female)</label>
+              <select class="form-input" id="pair-female" required></select>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="pair-date">Start Date</label>
+              <input type="date" class="form-input" id="pair-date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pair-locks">Locks Seen</label>
+              <input type="text" class="form-input" id="pair-locks" placeholder="e.g. Lock 1: 5/12, Lock 2: 5/20" />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="pair-ovulation">Ovulation Date</label>
+              <input type="date" class="form-input" id="pair-ovulation" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pair-lay">Expected/Lay Date</label>
+              <input type="date" class="form-input" id="pair-lay" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pair-notes">Pairing Notes</label>
+            <textarea class="form-input" id="pair-notes" rows="2" placeholder="Note lock duration, cooling response, etc..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-add-pairing')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Pairing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Clutch -->
+  <div class="modal-overlay" id="modal-add-clutch" onclick="closeModalOnOverlay(event, 'modal-add-clutch')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">🥚 Record Incubator Clutch</h3>
+        <span class="modal-close" onclick="closeModal('modal-add-clutch')">✕</span>
+      </div>
+      <form id="form-add-clutch" onsubmit="submitAddClutchForm(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="clutch-pairing">Breeding Pairing</label>
+            <select class="form-input" id="clutch-pairing" required onchange="autofillClutchParentInfo()"></select>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="clutch-id">Clutch ID</label>
+              <input type="text" class="form-input" id="clutch-id" placeholder="e.g. C-26-01" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="clutch-eggs">Total Eggs</label>
+              <input type="number" class="form-input" id="clutch-eggs" min="1" required />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="clutch-slugs">Slugs (Infertiles)</label>
+              <input type="number" class="form-input" id="clutch-slugs" min="0" value="0" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="clutch-incubate">Incubation Start</label>
+              <input type="date" class="form-input" id="clutch-incubate" required onchange="calculateExpectedHatchDate()" />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="clutch-expected">Expected Hatch</label>
+              <input type="date" class="form-input" id="clutch-expected" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="clutch-actual">Actual Hatch Date</label>
+              <input type="date" class="form-input" id="clutch-actual" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="clutch-notes">Clutch Notes</label>
+            <textarea class="form-input" id="clutch-notes" rows="2" placeholder="Temp settings, substrate moisture, shell appearance..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-add-clutch')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Clutch</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Rodent Rat -->
+  <div class="modal-overlay" id="modal-add-rat" onclick="closeModalOnOverlay(event, 'modal-add-rat')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">🐁 Add Breeder Rat</h3>
+        <span class="modal-close" onclick="closeModal('modal-add-rat')">✕</span>
+      </div>
+      <form id="form-add-rat" onsubmit="submitAddRatForm(event)">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="rat-name">Name</label>
+              <input type="text" class="form-input" id="rat-name" placeholder="e.g. Stolas" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="rat-id">Rat ID</label>
+              <input type="number" class="form-input" id="rat-id" placeholder="e.g. 5" min="1" required />
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="rat-colony">Colony Group</label>
+              <input type="text" class="form-input" id="rat-colony" placeholder="e.g. First" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="rat-sex">Sex</label>
+              <select class="form-input" id="rat-sex" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="rat-birth">Birth Date</label>
+              <input type="date" class="form-input" id="rat-birth" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="rat-status">Breeding Status</label>
+              <select class="form-input" id="rat-status" required>
+                <option value="Active">Active</option>
+                <option value="Resting">Resting</option>
+                <option value="Retired">Retired</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="rat-notes">Colony Notes</label>
+            <textarea class="form-input" id="rat-notes" rows="2" placeholder="Litter tracking, pedigree, feeding response..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-add-rat')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Rodent</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Log Expense -->
+  <div class="modal-overlay" id="modal-expense" onclick="closeModalOnOverlay(event, 'modal-expense')">
+    <div class="modal-card form-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">💵 Log Overhead Expense</h3>
+        <span class="modal-close" onclick="closeModal('modal-expense')">✕</span>
+      </div>
+      <form id="form-expense" onsubmit="submitExpenseForm(event)">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="expense-date">Date</label>
+              <input type="date" class="form-input" id="expense-date" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="expense-category">Category</label>
+              <select class="form-input" id="expense-category" required>
+                <option value="Rodents">Rodents (Feeders)</option>
+                <option value="Substrate">Substrate (Bedding)</option>
+                <option value="Enrichment/Care">Enrichment/Care</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Racks">Racks &amp; Tubs</option>
+                <option value="Vet">Vet Expenses</option>
+                <option value="Shipping">Shipping</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="expense-item">Item Description</label>
+              <input type="text" class="form-input" id="expense-item" placeholder="e.g. 8LB Coco Bedding" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="expense-cost">Cost ($)</label>
+              <input type="number" class="form-input" id="expense-cost" placeholder="e.g. 14.99" min="0.01" step="0.01" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="expense-vendor">Vendor</label>
+            <input type="text" class="form-input" id="expense-vendor" placeholder="e.g. Dotty's Wild Bird & Pet" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="expense-notes">Notes</label>
+            <textarea class="form-input" id="expense-notes" rows="2" placeholder="e.g. For breeding racks, $4.99/each..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="closeModal('modal-expense')">Cancel</button>
+          <button type="submit" class="btn-primary">Save Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

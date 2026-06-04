@@ -1,0 +1,1110 @@
+{
+  "Dashboard": [
+    [
+      "Chaos Creatures Breeding - Executive Dashboard"
+    ],
+    [
+      "Metrics Overview",
+      "Live Counter",
+      "Operational Insight"
+    ],
+    [
+      "Active Production Herd",
+      3,
+      "Total number of active breeders currently in production."
+    ],
+    [
+      "Total Animals Maintained",
+      7,
+      "Exact total collection count currently occupying facility racks."
+    ],
+    [
+      "Clutches In Incubator",
+      0,
+      "Number of egg clutches currently cooking in the incubator right now."
+    ],
+    [
+      "Total Feed Refusals (Last 30 Days)",
+      1,
+      "Tracks collection-wide skips to immediately highlight seasonal or health dips."
+    ],
+    [
+      "Year-to-Date Business Expenses",
+      80.88,
+      "Live overhead financial tracking of animal acquisition, rack systems, and rodent costs."
+    ]
+  ],
+  "Animals": [
+    {
+      "Animal ID": "BP001",
+      "Name": "Lilith",
+      "Species": "Ball Python",
+      "Gene 1": "Pinstripe",
+      "Gene 2": "Cinnamon",
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Female",
+      "Hatch Date": "2020-10-31",
+      "Weight": "No Wt",
+      "Status": "Retired",
+      "Rack/Tub": "T3",
+      "Last Fed": "2026-05-15",
+      "Notes": null,
+      "Feeding Alert": "OK",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": "https://docs.google.com/forms/d/e/1FAIpQLSceiNNE-GG_Ys-Us0sb110WnUodEh_WiJOZjrCZFaM574-pxQ/viewform?usp=pp_url&entry.31510263=BP001",
+      "Health QR": null
+    },
+    {
+      "Animal ID": "BP002",
+      "Name": "Apollo",
+      "Species": "Ball Python",
+      "Gene 1": "Banana",
+      "Gene 2": "Pastel",
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Male",
+      "Hatch Date": "2020-10-31",
+      "Weight": "No Wt",
+      "Status": "Breeder",
+      "Rack/Tub": null,
+      "Last Fed": "00:00:00",
+      "Notes": null,
+      "Feeding Alert": "Hungry",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": null,
+      "Health QR": null
+    },
+    {
+      "Animal ID": "BP003",
+      "Name": "Luna",
+      "Species": "Ball Python",
+      "Gene 1": "Chocolate",
+      "Gene 2": "Cinnamon",
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Unknown",
+      "Hatch Date": "2020-10-31",
+      "Weight": "No Wt",
+      "Status": "None",
+      "Rack/Tub": null,
+      "Last Fed": "00:00:00",
+      "Notes": null,
+      "Feeding Alert": "Hungry",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": null,
+      "Health QR": null
+    },
+    {
+      "Animal ID": "RBP001",
+      "Name": "Nagini",
+      "Species": "Red Blood Python",
+      "Gene 1": "Matrix",
+      "Gene 2": null,
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Unknown",
+      "Hatch Date": "2026-01-14",
+      "Weight": "No Wt",
+      "Status": "Breeder",
+      "Rack/Tub": "T2",
+      "Last Fed": "00:00:00",
+      "Notes": null,
+      "Feeding Alert": "Hungry",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": null,
+      "Health QR": null
+    },
+    {
+      "Animal ID": "RS001",
+      "Name": "King Kadora",
+      "Species": "Rat Snake",
+      "Gene 1": "Scaleless Everglades",
+      "Gene 2": null,
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Male",
+      "Hatch Date": "2020-10-31",
+      "Weight": "No Wt",
+      "Status": "Breeder/Permanent Resident",
+      "Rack/Tub": "T1",
+      "Last Fed": "2026-05-23",
+      "Notes": null,
+      "Feeding Alert": "OK",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": null,
+      "Health QR": null
+    },
+    {
+      "Animal ID": "LG001",
+      "Name": "Medusa",
+      "Species": "Leopard Gecko",
+      "Gene 1": "Normal",
+      "Gene 2": null,
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Female",
+      "Hatch Date": "2021-10-31",
+      "Weight": "No Wt",
+      "Status": "Retired",
+      "Rack/Tub": "T3",
+      "Last Fed": "2026-05-15",
+      "Notes": null,
+      "Feeding Alert": "OK",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": null,
+      "Health QR": null
+    },
+    {
+      "Animal ID": "LG002",
+      "Name": "Percy",
+      "Species": "Leopard Gecko",
+      "Gene 1": null,
+      "Gene 2": null,
+      "Gene 3": null,
+      "Hets / Poss Hets": null,
+      "Sex": "Female",
+      "Hatch Date": "2024-10-31",
+      "Weight": "No Wt",
+      "Status": "Breeder",
+      "Rack/Tub": "T3",
+      "Last Fed": "2026-05-15",
+      "Notes": null,
+      "Feeding Alert": "Hungry",
+      "Growth Trend": "No Data",
+      "Feeding QR": null,
+      "Weight Form Link": null,
+      "Weight QR": null,
+      "Health QR": null
+    }
+  ],
+  "Health Notes": [
+    {
+      "Date": null,
+      "Animal ID": "BP002 - Apollo",
+      "Event Type": "Shed",
+      "Details / Notes": null,
+      "Photo Link (optional)": null,
+      "Handled by": null
+    }
+  ],
+  "Feedings": [
+    {
+      "Date": "2026-05-15",
+      "Animal ID": "BP001 - Lilith",
+      "Food Item": "Rat",
+      "Size": "Medium",
+      "Accepted?": "Yes",
+      "Notes": null
+    },
+    {
+      "Date": "2026-05-23",
+      "Animal ID": "RS001 - Kinkadora",
+      "Food Item": "Rat",
+      "Size": "Fuzzie",
+      "Accepted?": "Yes",
+      "Notes": null
+    },
+    {
+      "Date": "2026-05-15",
+      "Animal ID": "RBP001 - Nagini",
+      "Food Item": "Rat",
+      "Size": "Fuzzie",
+      "Accepted?": "No",
+      "Notes": null
+    },
+    {
+      "Date": "2026-05-15",
+      "Animal ID": "LG001 - Medusa",
+      "Food Item": "Mealworms",
+      "Size": null,
+      "Accepted?": "Yes",
+      "Notes": null
+    },
+    {
+      "Date": "2026-05-15",
+      "Animal ID": "LG002 - Percy",
+      "Food Item": "Mealworms",
+      "Size": null,
+      "Accepted?": "Yes",
+      "Notes": null
+    }
+  ],
+  "Weight": [],
+  "Pairings": [],
+  "Eggs": [],
+  "Hatchlings": [],
+  "Rats": [
+    {
+      "Name": "Stolas",
+      "Rat ID": 1.0,
+      "Colony": "First",
+      "Sex": "Male",
+      "Birth Date": null,
+      "Breeding Status": "Active",
+      "Litters Produced": null,
+      "Notes": null
+    },
+    {
+      "Name": "Millie",
+      "Rat ID": 2.0,
+      "Colony": "First",
+      "Sex": "Female",
+      "Birth Date": null,
+      "Breeding Status": "Active",
+      "Litters Produced": null,
+      "Notes": null
+    },
+    {
+      "Name": "glitz",
+      "Rat ID": 3.0,
+      "Colony": "first",
+      "Sex": "Female",
+      "Birth Date": null,
+      "Breeding Status": "Active",
+      "Litters Produced": null,
+      "Notes": null
+    },
+    {
+      "Name": "glam",
+      "Rat ID": 4.0,
+      "Colony": "first",
+      "Sex": "Female",
+      "Birth Date": null,
+      "Breeding Status": "Active",
+      "Litters Produced": null,
+      "Notes": null
+    }
+  ],
+  "Expenses": [
+    {
+      "Date": "2026-05-16",
+      "Category": "Rodents",
+      "Item": "Live Rat Pups",
+      "Cost": 9.98,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": "$4.99/each",
+      "Category Breakdown": null,
+      "Total Spent": "Rodents"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Substrate",
+      "Item": "3LB Jumbo Aspen Pine",
+      "Cost": 7.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": "Substrate"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Enrichment/Care",
+      "Item": "Sml Rice Pops",
+      "Cost": 2.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": "Electricity"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Enrichment/Care",
+      "Item": "Mini Pet Igloo",
+      "Cost": 4.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": "Racks"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Enrichment/Care",
+      "Item": "40LB Pestell Clumping Litter (Baking Soda)",
+      "Cost": 10.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": "Enrichment/Care"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Substrate",
+      "Item": "8LB Coco Bedding",
+      "Cost": 14.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": "Vet"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Rodents",
+      "Item": "Small Rat",
+      "Cost": 5.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": "Female Breeder",
+      "Category Breakdown": null,
+      "Total Spent": "Shipping"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Enrichment/Care",
+      "Item": "3LB Rodent Lab Blocks",
+      "Cost": 4.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": "Total Overhead"
+    },
+    {
+      "Date": "2026-05-19",
+      "Category": "Rodents",
+      "Item": "Medium Rat",
+      "Cost": 7.99,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": "Male Breeder",
+      "Category Breakdown": null,
+      "Total Spent": null
+    },
+    {
+      "Date": "2026-05-22",
+      "Category": "Rodents",
+      "Item": "Live Rat Pups",
+      "Cost": 9.98,
+      "Vendor": "Dotty's Wild Bird & Pet",
+      "Notes": null,
+      "Category Breakdown": null,
+      "Total Spent": null
+    }
+  ],
+  "Dropdown Helper": [
+    {
+      "Normal": "Pastel",
+      "ID Label": null
+    },
+    {
+      "Normal": "Mojave",
+      "ID Label": null
+    },
+    {
+      "Normal": "Clown",
+      "ID Label": null
+    },
+    {
+      "Normal": "Pied",
+      "ID Label": null
+    },
+    {
+      "Normal": "Banana",
+      "ID Label": null
+    },
+    {
+      "Normal": "Enchi",
+      "ID Label": null
+    },
+    {
+      "Normal": "Fire",
+      "ID Label": null
+    },
+    {
+      "Normal": "Leopard",
+      "ID Label": null
+    },
+    {
+      "Normal": "Yellow Belly",
+      "ID Label": null
+    },
+    {
+      "Normal": "Axanthic",
+      "ID Label": null
+    },
+    {
+      "Normal": "Hypo",
+      "ID Label": null
+    },
+    {
+      "Normal": "Ghost",
+      "ID Label": null
+    },
+    {
+      "Normal": "Pinstripe",
+      "ID Label": null
+    },
+    {
+      "Normal": "Spider",
+      "ID Label": null
+    },
+    {
+      "Normal": "Black Pastel",
+      "ID Label": null
+    },
+    {
+      "Normal": "Cinnamon",
+      "ID Label": null
+    },
+    {
+      "Normal": "GHI",
+      "ID Label": null
+    },
+    {
+      "Normal": "Orange Dream",
+      "ID Label": null
+    },
+    {
+      "Normal": "Butter",
+      "ID Label": null
+    },
+    {
+      "Normal": "Lesser",
+      "ID Label": null
+    },
+    {
+      "Normal": "Chocolate",
+      "ID Label": null
+    },
+    {
+      "Normal": "Albino",
+      "ID Label": null
+    },
+    {
+      "Normal": "Coral Glow",
+      "ID Label": null
+    },
+    {
+      "Normal": "Butterfly",
+      "ID Label": null
+    },
+    {
+      "Normal": "Gravel",
+      "ID Label": null
+    },
+    {
+      "Normal": "Phantom",
+      "ID Label": null
+    },
+    {
+      "Normal": "Bamboo",
+      "ID Label": null
+    },
+    {
+      "Normal": "Russo",
+      "ID Label": null
+    },
+    {
+      "Normal": "Special",
+      "ID Label": null
+    },
+    {
+      "Normal": "Asphalt",
+      "ID Label": null
+    },
+    {
+      "Normal": "Specter",
+      "ID Label": null
+    },
+    {
+      "Normal": "Acid",
+      "ID Label": null
+    },
+    {
+      "Normal": "Confusion",
+      "ID Label": null
+    },
+    {
+      "Normal": "Stranger",
+      "ID Label": null
+    },
+    {
+      "Normal": "Wookie",
+      "ID Label": null
+    },
+    {
+      "Normal": "Huffman",
+      "ID Label": null
+    },
+    {
+      "Normal": "Sable",
+      "ID Label": null
+    },
+    {
+      "Normal": "Mahogany",
+      "ID Label": null
+    },
+    {
+      "Normal": "Lavender Albino",
+      "ID Label": null
+    },
+    {
+      "Normal": "Ultramel",
+      "ID Label": null
+    },
+    {
+      "Normal": "Toffee",
+      "ID Label": null
+    },
+    {
+      "Normal": "Candy",
+      "ID Label": null
+    },
+    {
+      "Normal": "Monarch",
+      "ID Label": null
+    },
+    {
+      "Normal": "Genetic Stripe",
+      "ID Label": null
+    },
+    {
+      "Normal": "Granite",
+      "ID Label": null
+    },
+    {
+      "Normal": "Calico",
+      "ID Label": null
+    },
+    {
+      "Normal": "Trick",
+      "ID Label": null
+    },
+    {
+      "Normal": "Blitz",
+      "ID Label": null
+    },
+    {
+      "Normal": "Woma",
+      "ID Label": null
+    },
+    {
+      "Normal": "Desert Ghost",
+      "ID Label": null
+    },
+    {
+      "Normal": "Puzzle",
+      "ID Label": null
+    },
+    {
+      "Normal": "Cryptic",
+      "ID Label": null
+    },
+    {
+      "Normal": "Monsoon",
+      "ID Label": null
+    },
+    {
+      "Normal": "Sentinel",
+      "ID Label": null
+    },
+    {
+      "Normal": "Lace",
+      "ID Label": null
+    },
+    {
+      "Normal": "Red Stripe",
+      "ID Label": null
+    },
+    {
+      "Normal": "Trojan",
+      "ID Label": null
+    },
+    {
+      "Normal": "Desert",
+      "ID Label": null
+    },
+    {
+      "Normal": "Scaleless Head",
+      "ID Label": null
+    },
+    {
+      "Normal": "Mystic",
+      "ID Label": null
+    },
+    {
+      "Normal": "Red Axanthic",
+      "ID Label": null
+    },
+    {
+      "Normal": "Het Red Axanthic",
+      "ID Label": null
+    },
+    {
+      "Normal": "Paint",
+      "ID Label": null
+    },
+    {
+      "Normal": "Super Stripe",
+      "ID Label": null
+    }
+  ],
+  "Morph Lists": [
+    {
+      "Ball Python": "Normal",
+      "Red Blood Python": "Normal",
+      "Leopard Gecko": "Normal",
+      "Crested Gecko": "Harlequin",
+      "Rat Snake": "Normal"
+    },
+    {
+      "Ball Python": "Pastel",
+      "Red Blood Python": "Matrix",
+      "Leopard Gecko": "Mack Snow",
+      "Crested Gecko": "Dalmatian",
+      "Rat Snake": "Scaleless"
+    },
+    {
+      "Ball Python": "Mojave",
+      "Red Blood Python": "T+",
+      "Leopard Gecko": "Super Snow",
+      "Crested Gecko": "Pinstripe",
+      "Rat Snake": "Everglades"
+    },
+    {
+      "Ball Python": "Clown",
+      "Red Blood Python": "Goldeneye",
+      "Leopard Gecko": "Tremper Albino",
+      "Crested Gecko": "Lilly White",
+      "Rat Snake": "Scaleless Everglades"
+    },
+    {
+      "Ball Python": "Pied",
+      "Red Blood Python": "Batik",
+      "Leopard Gecko": "Bell Albino",
+      "Crested Gecko": "Axanthic",
+      "Rat Snake": "Albino"
+    },
+    {
+      "Ball Python": "Banana",
+      "Red Blood Python": "Ivory",
+      "Leopard Gecko": "Rainwater Albino",
+      "Crested Gecko": "Tiger",
+      "Rat Snake": "Leucistic"
+    },
+    {
+      "Ball Python": "Enchi",
+      "Red Blood Python": "Albino",
+      "Leopard Gecko": "Eclipse",
+      "Crested Gecko": "Brindle",
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Fire",
+      "Red Blood Python": null,
+      "Leopard Gecko": "RAPTOR",
+      "Crested Gecko": "Halloween",
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Leopard",
+      "Red Blood Python": null,
+      "Leopard Gecko": "Bold Stripe",
+      "Crested Gecko": "Phantom",
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Yellow Belly",
+      "Red Blood Python": null,
+      "Leopard Gecko": "Murphys Patternless",
+      "Crested Gecko": "Quadstripe",
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Axanthic",
+      "Red Blood Python": null,
+      "Leopard Gecko": "Blizzard",
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Hypo",
+      "Red Blood Python": null,
+      "Leopard Gecko": "Black Night",
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Ghost",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Pinstripe",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Spider",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Black Pastel",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Cinnamon",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "GHI",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Orange Dream",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Butter",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Lesser",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Chocolate",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Albino",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Coral Glow",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Butterfly",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Gravel",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Phantom",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Bamboo",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Russo",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Special",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Asphalt",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Specter",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Acid",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Confusion",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Stranger",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Wookie",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Huffman",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Sable",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Mahogany",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Lavender Albino",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Ultramel",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Toffee",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Candy",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Monarch",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Genetic Stripe",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Granite",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Calico",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Trick",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Blitz",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Woma",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Desert Ghost",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Puzzle",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Cryptic",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Monsoon",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Sentinel",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Lace",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Red Stripe",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Trojan",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Desert",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Scaleless Head",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Mystic",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Red Axanthic",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Het Red Axanthic",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Paint",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    },
+    {
+      "Ball Python": "Super Stripe",
+      "Red Blood Python": null,
+      "Leopard Gecko": null,
+      "Crested Gecko": null,
+      "Rat Snake": null
+    }
+  ],
+  "Form Responses 1": [],
+  "Form Responses 2": []
+}
