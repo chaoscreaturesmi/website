@@ -457,7 +457,7 @@
           <p class="settings-desc">Choose whether the portal reads from local browser storage or syncs in real-time with your Google Spreadsheet.</p>
           <div class="form-group">
             <label class="form-label" for="setting-data-source">Sync Method</label>
-            <select class="form-input" id="setting-data-source" onchange="toggleSettingsSyncPanel()" style="max-width:300px;">
+            <select class="form-input" id="setting-data-source" onchange="toggleSettingsSyncPanel(); saveSettings();" style="max-width:300px;">
               <option value="local">Local Browser Database (IndexedDB / Sandbox)</option>
               <option value="google-read">Google Sheets Sync (Live Fetch via CSV)</option>
               <option value="google-write">Google Sheets Sync + Apps Script Write Back API</option>
