@@ -6,7 +6,7 @@
 
 define('DB_HOST', 'db5020613735.hosting-data.io');
 define('DB_PORT', '3306');
-define('DB_NAME', 'db5020613735'); // In IONOS, DB name matches the host ID prefix
+define('DB_NAME', 'dbs15751025'); // The corrected database name
 define('DB_USER', 'dbu5561476');
 define('DB_PASS', 'Dqp85D2CQ!Jdi6X');
 
